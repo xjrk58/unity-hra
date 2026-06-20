@@ -12,6 +12,8 @@ then fart them out at the goal.
   (kapacita 8).
 - Plný (nebo částečně plný) batůžek dones do **oranžového cíle** a tam je
   **vyprdni**.
+- **Útok:** zamiř na soupeře a **prdni po něm pravým tlačítkem** — stojí to
+  **2 prdy z batůžku** a soupeř na **10 sekund** zmizí (nesbírá, nenosí).
 - Kdo první donese **15 prdů** do cíle, vyhrává.
 
 ## Ovládání / Controls
@@ -22,6 +24,7 @@ then fart them out at the goal.
 | Rozhlížení | myš |
 | Skok | `Space` |
 | Vyprdnout (v cíli) | drž levé tlačítko myši |
+| Prdnout po soupeři (−2 prdy, vyřadí na 10 s) | pravé tlačítko myši |
 | Nová hra | `R` (po výhře) |
 
 ## Jak to spustit / How to run

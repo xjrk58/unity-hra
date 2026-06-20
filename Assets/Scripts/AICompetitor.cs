@@ -30,6 +30,7 @@ public class AICompetitor : Competitor
     void Update()
     {
         if (GameManager.Instance == null || GameManager.Instance.GameOver) return;
+        if (Stunned) return; // knocked out by a fart blast — sit this one out
 
         UpdateState();
 

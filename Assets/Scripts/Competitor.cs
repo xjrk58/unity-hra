@@ -21,12 +21,51 @@ public abstract class Competitor : MonoBehaviour
 
     public virtual bool IsPlayer => false;
 
+    float stunUntil;
+
+    /// <summary>True while this competitor is temporarily knocked out by a fart blast.</summary>
+    public bool Stunned => Time.time < stunUntil;
+
     /// <summary>Try to add farts to the backpack. Returns false if already full.</summary>
     public bool Collect(int amount = 1)
     {
         if (BackpackFull) return false;
         Backpack = Mathf.Min(Capacity, Backpack + amount);
         return true;
+    }
+
+    /// <summary>Spend farts from the backpack (e.g. to fire a blast). False if not enough.</summary>
+    public bool SpendFromBackpack(int amount)
+    {
+        if (Backpack < amount) return false;
+        Backpack -= amount;
+        return true;
+    }
+
+    /// <summary>
+    /// Temporarily knock this competitor out: hide it, switch off its collider and
+    /// stop it acting for <paramref name="seconds"/>, then bring it back.
+    /// </summary>
+    public void Stun(float seconds)
+    {
+        stunUntil = Time.time + seconds;
+        InGoal = false;
+        FartPuff.Spawn(transform.position, new Color(0.6f, 0.85f, 0.2f));
+        SetActiveVisuals(false);
+        CancelInvoke(nameof(EndStun));
+        Invoke(nameof(EndStun), seconds);
+    }
+
+    void EndStun()
+    {
+        SetActiveVisuals(true);
+    }
+
+    void SetActiveVisuals(bool on)
+    {
+        foreach (var r in GetComponentsInChildren<Renderer>(true)) r.enabled = on;
+        var cc = GetComponent<CharacterController>();
+        if (cc != null) cc.enabled = on; // disabled => others can pass through, AI can't move
     }
 
     /// <summary>

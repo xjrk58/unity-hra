@@ -99,16 +99,18 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < sorted.Count; i++)
         {
             var c = sorted[i];
-            string you = c.IsPlayer ? "  (ty)" : "";
+            string tag = c.IsPlayer ? "  (ty)" : (c.Stunned ? "  (vyřazen)" : "");
             GUI.Label(new Rect(pad + 8, pad + 32 + i * 24, 230, 24),
-                $"{c.DisplayName}: {c.Score}{you}", hudStyle);
+                $"{c.DisplayName}: {c.Score}{tag}", hudStyle);
         }
 
-        // Player backpack
+        // Player backpack + blast hint
         if (player != null)
         {
             GUI.Label(new Rect(pad, Screen.height - 40, 320, 30),
                 $"Batůžek: {player.Backpack} / {player.Capacity}", hudStyle);
+            GUI.Label(new Rect(pad, Screen.height - 66, 460, 30),
+                "Pravé tlačítko: prdni po soupeři (−2 prdy, vyřadí na 10 s)", hudStyle);
         }
 
         // Crosshair
@@ -129,7 +131,7 @@ public class GameManager : MonoBehaviour
                 hint = "Nasbírej zelené prdy do batůžku.";
             else
                 hint = "Dones prdy do oranžového cíle a vyprdni je.";
-            GUI.Label(new Rect(0, Screen.height - 74, Screen.width, 30), hint, hintStyle);
+            GUI.Label(new Rect(0, Screen.height - 104, Screen.width, 30), hint, hintStyle);
         }
 
         // Win banner
