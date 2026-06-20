@@ -96,17 +96,18 @@ public class GameBootstrap : MonoBehaviour
     void BuildRamp(int i)
     {
         float s = Arena.Side(i);
-        float run = Arena.RampTopZ;             // horizontal length in Z
-        float rise = Arena.FloorHeight;          // vertical climb
+        float run = Arena.RampFootZ - Arena.RampTopZ; // horizontal length in Z
+        float rise = Arena.FloorHeight;                // vertical climb
         float length = Mathf.Sqrt(run * run + rise * rise);
         float angle = Mathf.Atan2(rise, run) * Mathf.Rad2Deg;
+        float centerZ = (Arena.RampFootZ + Arena.RampTopZ) * 0.5f * s;
 
         var ramp = GameObject.CreatePrimitive(PrimitiveType.Cube);
         ramp.name = "Ramp";
-        ramp.transform.localScale = new Vector3(5f, 0.5f, length);
-        ramp.transform.position = new Vector3(0f, Arena.FloorY(i) + rise * 0.5f, run * 0.5f * s);
-        // pitch so the +Z (or -Z) end rises to the upper floor
-        ramp.transform.rotation = Quaternion.Euler(-angle * s, 0f, 0f);
+        ramp.transform.localScale = new Vector3(Arena.RampWidth, 0.5f, length);
+        ramp.transform.position = new Vector3(0f, Arena.FloorY(i) + rise * 0.5f, centerZ);
+        // pitch so the foot (near the edge) sits low and the top reaches the floor above
+        ramp.transform.rotation = Quaternion.Euler(angle * s, 0f, 0f);
         ramp.GetComponent<Renderer>().material = rampMat;
     }
 
