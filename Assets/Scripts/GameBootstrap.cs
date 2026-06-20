@@ -2,30 +2,34 @@ using UnityEngine;
 
 /// <summary>
 /// Single entry point placed in the scene. Builds the entire game world from
-/// primitives at runtime: lighting, arena, goal, player, AI rivals and pickups.
-/// Keeping everything code-driven means the authored scene only needs this one
-/// component.
+/// primitives at runtime: lighting, a multi-storey arena, ramps, the goal, the
+/// player, AI rivals and pickups. Geometry comes from <see cref="Arena"/> so the
+/// AI navigation matches the built world.
 /// </summary>
 public class GameBootstrap : MonoBehaviour
 {
-    const float ArenaHalf = 20f;
-    static readonly Vector3 GoalPos = new Vector3(0f, 0f, 16f);
+    static readonly Vector3 GoalPos = new Vector3(9f, 0f, -9f);
+
+    Material floorMat, rampMat, railMat;
 
     void Awake()
     {
+        floorMat = MaterialUtil.Opaque(new Color(0.32f, 0.34f, 0.37f));
+        rampMat = MaterialUtil.Opaque(new Color(0.5f, 0.42f, 0.28f));
+        railMat = MaterialUtil.Opaque(new Color(0.22f, 0.23f, 0.26f));
+
         BuildManager();
         BuildEnvironment();
         BuildGoal();
-        BuildPlayer(new Vector3(0f, 1.2f, -14f));
-        BuildAI("Pšouk", new Color(0.85f, 0.2f, 0.2f), new Vector3(-7f, 1.2f, -7f));
-        BuildAI("Bzdina", new Color(0.2f, 0.45f, 0.9f), new Vector3(7f, 1.2f, -7f));
-        SpawnPickups(14);
+        BuildPlayer(new Vector3(0f, 1.2f, -6f));
+        BuildAI("Pšouk", new Color(0.85f, 0.2f, 0.2f), new Vector3(-6f, 1.2f, -2f));
+        BuildAI("Bzdina", new Color(0.2f, 0.45f, 0.9f), new Vector3(6f, 1.2f, -2f));
+        SpawnPickups(20);
     }
 
     void BuildManager()
     {
-        var go = new GameObject("GameManager");
-        go.AddComponent<GameManager>();
+        new GameObject("GameManager").AddComponent<GameManager>();
     }
 
     void BuildEnvironment()
@@ -41,39 +45,79 @@ public class GameBootstrap : MonoBehaviour
         sun.shadows = LightShadows.Soft;
         sunGO.transform.rotation = Quaternion.Euler(50f, -30f, 0f);
 
-        var floor = GameObject.CreatePrimitive(PrimitiveType.Plane);
-        floor.name = "Floor";
-        floor.transform.localScale = new Vector3(ArenaHalf * 0.2f, 1f, ArenaHalf * 0.2f);
-        floor.GetComponent<Renderer>().material = MaterialUtil.Opaque(new Color(0.3f, 0.32f, 0.34f));
+        for (int f = 0; f < Arena.FloorCount; f++)
+            BuildFloor(f);
 
-        CreateWall(new Vector3(0f, 2f, ArenaHalf), new Vector3(ArenaHalf * 2f, 4f, 1f));
-        CreateWall(new Vector3(0f, 2f, -ArenaHalf), new Vector3(ArenaHalf * 2f, 4f, 1f));
-        CreateWall(new Vector3(ArenaHalf, 2f, 0f), new Vector3(1f, 4f, ArenaHalf * 2f));
-        CreateWall(new Vector3(-ArenaHalf, 2f, 0f), new Vector3(1f, 4f, ArenaHalf * 2f));
-
-        var obsMat = MaterialUtil.Opaque(new Color(0.42f, 0.36f, 0.3f));
-        Vector3[] obstacles =
-        {
-            new Vector3(8f, 1f, 4f), new Vector3(-7f, 1f, 9f), new Vector3(5f, 1f, -9f),
-            new Vector3(-10f, 1f, -3f), new Vector3(0f, 1f, 8f),
-        };
-        foreach (var p in obstacles)
-        {
-            var b = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            b.name = "Obstacle";
-            b.transform.position = p;
-            b.transform.localScale = new Vector3(3f, 2f, 3f);
-            b.GetComponent<Renderer>().material = obsMat;
-        }
+        for (int i = 0; i < Arena.FloorCount - 1; i++)
+            BuildRamp(i);
     }
 
-    void CreateWall(Vector3 pos, Vector3 size)
+    // A floor is a solid square platform; upper floors have a hole the ramp
+    // rises through. The platform is assembled from strips around that hole.
+    void BuildFloor(int f)
     {
-        var w = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        w.name = "Wall";
-        w.transform.position = pos;
-        w.transform.localScale = size;
-        w.GetComponent<Renderer>().material = MaterialUtil.Opaque(new Color(0.22f, 0.23f, 0.26f));
+        float y = Arena.FloorY(f);
+        float h = Arena.Half;
+
+        if (f == 0)
+        {
+            AddBox("Floor", 0f, y - 0.25f, 0f, h * 2f, 0.5f, h * 2f, floorMat);
+        }
+        else
+        {
+            float s = Arena.Side(f - 1);
+            float zLo = Mathf.Min(Arena.HoleZMin * s, Arena.HoleZMax * s);
+            float zHi = Mathf.Max(Arena.HoleZMin * s, Arena.HoleZMax * s);
+            float xLo = -Arena.HoleXHalf, xHi = Arena.HoleXHalf;
+
+            // back strip (z below hole) and front strip (z above hole)
+            AddStrip("Floor", -h, h, -h, zLo, y);
+            AddStrip("Floor", -h, h, zHi, h, y);
+            // left / right strips beside the hole
+            AddStrip("Floor", -h, xLo, zLo, zHi, y);
+            AddStrip("Floor", xHi, h, zLo, zHi, y);
+        }
+
+        // perimeter railings so players/AI don't walk off the edges
+        AddBox("Rail", 0f, y + 0.6f, h, h * 2f, 1.2f, 0.4f, railMat);
+        AddBox("Rail", 0f, y + 0.6f, -h, h * 2f, 1.2f, 0.4f, railMat);
+        AddBox("Rail", h, y + 0.6f, 0f, 0.4f, 1.2f, h * 2f, railMat);
+        AddBox("Rail", -h, y + 0.6f, 0f, 0.4f, 1.2f, h * 2f, railMat);
+    }
+
+    // Adds a floor slab covering [xMin,xMax] x [zMin,zMax] at height y (skips empty).
+    void AddStrip(string name, float xMin, float xMax, float zMin, float zMax, float y)
+    {
+        float sx = xMax - xMin, sz = zMax - zMin;
+        if (sx <= 0.01f || sz <= 0.01f) return;
+        AddBox(name, (xMin + xMax) * 0.5f, y - 0.25f, (zMin + zMax) * 0.5f, sx, 0.5f, sz, floorMat);
+    }
+
+    void BuildRamp(int i)
+    {
+        float s = Arena.Side(i);
+        float run = Arena.RampTopZ;             // horizontal length in Z
+        float rise = Arena.FloorHeight;          // vertical climb
+        float length = Mathf.Sqrt(run * run + rise * rise);
+        float angle = Mathf.Atan2(rise, run) * Mathf.Rad2Deg;
+
+        var ramp = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        ramp.name = "Ramp";
+        ramp.transform.localScale = new Vector3(5f, 0.5f, length);
+        ramp.transform.position = new Vector3(0f, Arena.FloorY(i) + rise * 0.5f, run * 0.5f * s);
+        // pitch so the +Z (or -Z) end rises to the upper floor
+        ramp.transform.rotation = Quaternion.Euler(-angle * s, 0f, 0f);
+        ramp.GetComponent<Renderer>().material = rampMat;
+    }
+
+    GameObject AddBox(string name, float cx, float cy, float cz, float sx, float sy, float sz, Material mat)
+    {
+        var b = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        b.name = name;
+        b.transform.position = new Vector3(cx, cy, cz);
+        b.transform.localScale = new Vector3(sx, sy, sz);
+        b.GetComponent<Renderer>().material = mat;
+        return b;
     }
 
     void BuildGoal()
@@ -84,7 +128,7 @@ public class GameBootstrap : MonoBehaviour
         var pad = GameObject.CreatePrimitive(PrimitiveType.Cube);
         pad.name = "GoalPad";
         pad.transform.SetParent(goal.transform, false);
-        pad.transform.localScale = new Vector3(6f, 0.2f, 6f);
+        pad.transform.localScale = new Vector3(5f, 0.2f, 5f);
         pad.transform.localPosition = new Vector3(0f, 0.1f, 0f);
         pad.GetComponent<Renderer>().material = MaterialUtil.Emissive(new Color(1f, 0.55f, 0.05f), 1.2f);
         Destroy(pad.GetComponent<Collider>());
@@ -92,14 +136,14 @@ public class GameBootstrap : MonoBehaviour
         var beam = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
         beam.name = "GoalBeam";
         beam.transform.SetParent(goal.transform, false);
-        beam.transform.localScale = new Vector3(0.3f, 4f, 0.3f);
-        beam.transform.localPosition = new Vector3(0f, 4f, 0f);
+        beam.transform.localScale = new Vector3(0.3f, 10f, 0.3f);
+        beam.transform.localPosition = new Vector3(0f, 10f, 0f);
         beam.GetComponent<Renderer>().material = MaterialUtil.Emissive(new Color(1f, 0.8f, 0.2f), 1.5f);
         Destroy(beam.GetComponent<Collider>());
 
         var trigger = goal.AddComponent<BoxCollider>();
         trigger.isTrigger = true;
-        trigger.size = new Vector3(6f, 4f, 6f);
+        trigger.size = new Vector3(5f, 4f, 5f);
         trigger.center = new Vector3(0f, 2f, 0f);
         goal.AddComponent<GoalZone>();
 
@@ -122,6 +166,7 @@ public class GameBootstrap : MonoBehaviour
         var cam = camGO.AddComponent<Camera>();
         cam.clearFlags = CameraClearFlags.SolidColor;
         cam.backgroundColor = new Color(0.5f, 0.7f, 0.95f);
+        cam.farClipPlane = 200f;
         camGO.AddComponent<AudioListener>();
 
         var pc = player.AddComponent<PlayerController>();
@@ -168,30 +213,44 @@ public class GameBootstrap : MonoBehaviour
         GameManager.Instance.RegisterCompetitor(ai);
     }
 
+    // Scatter pickups across every floor, avoiding holes and the goal.
     void SpawnPickups(int count)
     {
         var container = new GameObject("Pickups");
         var mat = MaterialUtil.Emissive(new Color(0.5f, 0.85f, 0.2f), 0.7f);
 
         int placed = 0, guard = 0;
-        while (placed < count && guard++ < 1000)
+        while (placed < count && guard++ < 2000)
         {
-            var p = new Vector3(Random.Range(-17f, 17f), 0.6f, Random.Range(-17f, 17f));
-            if (Vector3.Distance(p, GoalPos + Vector3.up * 0.6f) < 5f) continue;
+            int f = Random.Range(0, Arena.FloorCount);
+            float x = Random.Range(-11f, 11f);
+            float z = Random.Range(-11f, 11f);
+            if (InHole(f, x, z)) continue;
+            if (f == 0 && Vector2.Distance(new Vector2(x, z), new Vector2(GoalPos.x, GoalPos.z)) < 4f)
+                continue;
 
             var s = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             s.name = "FartPickup";
             s.transform.SetParent(container.transform, true);
-            s.transform.position = p;
+            s.transform.position = new Vector3(x, Arena.FloorY(f) + 0.6f, z);
             s.transform.localScale = Vector3.one * 0.7f;
             s.GetComponent<Renderer>().material = mat;
 
             var col = s.GetComponent<SphereCollider>();
             col.isTrigger = true;
-            col.radius = 1.7f; // generous pickup range relative to the 0.7 scale
+            col.radius = 1.7f;
 
             s.AddComponent<FartPickup>();
             placed++;
         }
+    }
+
+    static bool InHole(int f, float x, float z)
+    {
+        if (f == 0) return false;
+        float s = Arena.Side(f - 1);
+        float zLo = Mathf.Min(Arena.HoleZMin * s, Arena.HoleZMax * s);
+        float zHi = Mathf.Max(Arena.HoleZMin * s, Arena.HoleZMax * s);
+        return Mathf.Abs(x) <= Arena.HoleXHalf + 1f && z >= zLo - 1f && z <= zHi + 1f;
     }
 }

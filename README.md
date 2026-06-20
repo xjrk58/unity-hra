@@ -8,8 +8,8 @@ then fart them out at the goal.
 
 - Hraješ z first-person pohledu proti dvěma botům: **Pšouk** (červený) a
   **Bzdina** (modrý).
-- Po aréně jsou rozházené **zelené prdy**. Posbírej je do svého **batůžku**
-  (kapacita 8).
+- Aréna má **4 patra** spojená rampami. Po všech patrech jsou rozházené
+  **zelené prdy** — posbírej je do svého **batůžku** (kapacita 8).
 - Plný (nebo částečně plný) batůžek dones do **oranžového cíle** a tam je
   **vyprdni**.
 - **Útok:** zamiř na soupeře a **prdni po něm pravým tlačítkem** — stojí to

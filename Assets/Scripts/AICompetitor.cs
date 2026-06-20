@@ -60,7 +60,7 @@ public class AICompetitor : Competitor
 
         if (target != null)
         {
-            MoveTowards(target.transform.position);
+            MoveTowards(NextStepToward(target.transform.position));
         }
         else if (Backpack > 0)
         {
@@ -72,7 +72,7 @@ public class AICompetitor : Competitor
     void DoDeliver()
     {
         if (goal == null) return;
-        MoveTowards(goal.position);
+        MoveTowards(NextStepToward(goal.position));
 
         if (InGoal)
         {
@@ -84,6 +84,41 @@ public class AICompetitor : Competitor
             }
             if (Backpack == 0) state = State.Collect;
         }
+    }
+
+    // Returns the next point to steer toward, routing via ramps when the final
+    // destination is on a different floor.
+    Vector3 NextStepToward(Vector3 finalTarget)
+    {
+        int cf = Arena.FloorOf(transform.position.y);
+        int tf = Arena.FloorOf(finalTarget.y);
+        if (cf == tf) return finalTarget;
+
+        if (tf > cf)
+        {
+            // climb ramp cf: reach its foot, then its top
+            int i = cf;
+            Vector3 foot = Arena.RampBottom(i);
+            if (HDist(foot) > 1.3f && transform.position.y < Arena.FloorY(i) + 1f)
+                return foot;
+            return Arena.RampTop(i);
+        }
+        else
+        {
+            // descend ramp cf-1: reach its top (the hole), then its foot
+            int i = cf - 1;
+            Vector3 top = Arena.RampTop(i);
+            if (HDist(top) > 1.3f && transform.position.y > Arena.FloorY(cf) - 1f)
+                return top;
+            return Arena.RampBottom(i);
+        }
+    }
+
+    float HDist(Vector3 p)
+    {
+        Vector3 d = p - transform.position;
+        d.y = 0f;
+        return d.magnitude;
     }
 
     void MoveTowards(Vector3 worldTarget)
