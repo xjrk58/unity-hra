@@ -47,3 +47,7 @@ crashlytics-build.properties
 /.utmp/
 # written into the project by the Unity test framework during player builds
 /Assets/Resources/PerformanceTestRun*
+
+# Python bytecode
+__pycache__/
+*.pyc

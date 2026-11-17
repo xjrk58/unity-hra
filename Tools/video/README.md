@@ -18,13 +18,17 @@ script plus the game's fart recordings and monster sounds.
 ## Make them
 
 ```sh
-for v in howto_en howto_cs review_en review_cs; do
-  python3 Tools/video/make_slides.py Tools/video/$v.json Logs/video/$v
-  blender -b --factory-startup -P Tools/video/assemble.py -- Logs/video/$v/timeline.json "$PWD/Videos/$v.mp4"
-done
+make() {   # storyboard name, output file
+  python3 Tools/video/make_slides.py Tools/video/$1.json Logs/video/$1 &&
+  blender -b --factory-startup -P Tools/video/assemble.py -- Logs/video/$1/timeline.json "$PWD/Videos/$2"
+}
+make howto_en  how-to-play-en.mp4
+make howto_cs  jak-se-to-hraje-cs.mp4
+make review_en review-en.mp4
+make review_cs recenze-cs.mp4
 ```
 
-Each takes a few minutes and comes out at 1920×1080, about two minutes long.
+Each takes about five minutes to render and comes out at 1920×1080, between one and a half and two minutes long, 30–37 MB.
 The storyboards are the `.json` files here: one entry per picture with its
 title, text, length and sounds. Change the words there.
 
