@@ -39,3 +39,11 @@ crashlytics-build.properties
 
 # Packed addressables
 /[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
+
+# Output of the dev tools (Assets/Editor)
+/Shots/
+/FartSounds/
+# intermediate files of the Android build
+/.utmp/
+# written into the project by the Unity test framework during player builds
+/Assets/Resources/PerformanceTestRun*

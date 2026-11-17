@@ -1,0 +1,23 @@
+// Android library holding the game's Bluetooth helper (two players, phone to phone).
+// Unity adds every *.androidlib folder under Assets/Plugins/Android to the Gradle
+// project; the SDK versions come from the properties Unity writes for the build.
+apply plugin: 'com.android.library'
+
+android {
+    namespace "com.prdivyzavod.btlink"
+    compileSdk getProperty("unity.compileSdkVersion") as int
+    buildToolsVersion getProperty("unity.buildToolsVersion")
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    defaultConfig {
+        minSdk getProperty("unity.minSdkVersion") as int
+    }
+
+    lint {
+        abortOnError false
+    }
+}

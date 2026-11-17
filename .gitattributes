@@ -1,0 +1,22 @@
+# Text: diffable, line endings normalised
+*.cs      text diff=csharp
+*.md      text
+*.py      text
+*.sh      text eol=lf
+*.java    text
+*.gradle  text
+*.json    text
+*.txt     text
+
+# Unity's YAML files stay as Unity writes them
+*.unity   text eol=lf
+*.asset   text eol=lf
+*.mat     text eol=lf
+*.meta    text eol=lf
+
+# Binary assets
+*.png  binary
+*.jpg  binary
+*.hdr  binary
+*.fbx  binary
+*.wav  binary

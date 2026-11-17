@@ -1,0 +1,12 @@
+The fart recordings in this folder are cut from:
+
+  "Farts - pieruja" by Yle Arkisto (the sound archive of Yleisradio, the Finnish
+  Broadcasting Company), recorded 1986.
+  Freesound #425594: https://freesound.org/people/YleArkisto/sounds/425594/
+  Copy used: https://commons.wikimedia.org/wiki/File:425594_ylearkisto_farts-pieruja.wav
+  Licence: Creative Commons Attribution 3.0 — https://creativecommons.org/licenses/by/3.0/
+
+Changes made: the 4:50 recording was cut into individual events, mixed to mono,
+high-passed at 40 Hz, faded at both ends and loudness-normalised
+(Tools/assets/slice_farts.py). The number in each file name is the event's index
+in the original recording.
