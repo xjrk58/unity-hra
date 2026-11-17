@@ -1,0 +1,204 @@
+{
+ "brand": "Prdivý závod – the reviews (entirely made up)",
+ "music": true,
+ "music_volume": 0.28,
+ "slides": [
+  {
+   "image": "Shots/desk/02_overview.png",
+   "where": "centre",
+   "seconds": 5.5,
+   "zoom": 1.1,
+   "title": "Prdivý závod",
+   "text": "The reviews are in",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/medium_12.wav",
+     "at": 2.4,
+     "volume": 1.0,
+     "pitch": 1.0
+    }
+   ]
+  },
+  {
+   "image": "Shots/desk/09_sunward.png",
+   "seconds": 7.5,
+   "zoom": 1.08,
+   "title": "★★★★★",
+   "text": "“A triumph of the genre. There is no genre.”   — The Daily Whiff",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/short_23.wav",
+     "at": 5.6,
+     "volume": 0.8,
+     "pitch": 1.0
+    }
+   ]
+  },
+  {
+   "image": "Shots/desk/05_floor1.png",
+   "seconds": 8,
+   "zoom": 1.08,
+   "title": "Graphics: 10/10",
+   "text": "“The concrete is so realistic I checked my shoes afterwards.”   — Car Park Enthusiast Weekly"
+  },
+  {
+   "image": "Shots/desk/06_pickups_deck0.png",
+   "seconds": 8.5,
+   "zoom": 1.1,
+   "pan": [
+    -60,
+    0
+   ],
+   "title": "Sound: 11/10",
+   "text": "“63 real recordings from a 1986 radio archive. Somebody’s finest hour, preserved for science.”",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/short_44.wav",
+     "at": 1.0,
+     "volume": 0.85,
+     "pitch": 1.0
+    },
+    {
+     "file": "Assets/Resources/Audio/Farts/short_47.wav",
+     "at": 1.7,
+     "volume": 0.85,
+     "pitch": 1.0
+    },
+    {
+     "file": "Assets/Resources/Audio/Farts/long_18.wav",
+     "at": 2.6,
+     "volume": 1.0,
+     "pitch": 1.0
+    },
+    {
+     "file": "Assets/Resources/Audio/Farts/short_13.wav",
+     "at": 6.9,
+     "volume": 0.6,
+     "pitch": 1.6
+    }
+   ]
+  },
+  {
+   "image": "Shots/desk/04_goal.png",
+   "seconds": 8,
+   "zoom": 1.08,
+   "title": "Gameplay: 9/10",
+   "text": "“Collect. Carry. Release. It is like parenting, only faster and with a scoreboard.”",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/short_57.wav",
+     "at": 6.2,
+     "volume": 0.8,
+     "pitch": 1.0
+    }
+   ]
+  },
+  {
+   "image": "Shots/desk/10_face.png",
+   "seconds": 8.5,
+   "zoom": 1.08,
+   "title": "The rivals",
+   "text": "“Pšouk blasted me from behind on the second deck. I respect him. I do not forgive him.”",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/long_54.wav",
+     "at": 1.6,
+     "volume": 1.0,
+     "pitch": 1.0
+    }
+   ]
+  },
+  {
+   "image": "Shots/desk/20_monster_far.png",
+   "seconds": 8,
+   "zoom": 1.12,
+   "title": "Horror: 10/10",
+   "text": "“I screamed. My phone screamed. The neighbours have moved out.”   — Flatulence Monthly",
+   "sounds": [
+    {
+     "file": "FartSounds/monster_sting.wav",
+     "at": 0.2,
+     "volume": 0.9
+    }
+   ]
+  },
+  {
+   "image": "Shots/desk/22_monster_catch.png",
+   "seconds": 7.5,
+   "zoom": 1.14,
+   "title": "★★★★★",
+   "text": "“It ate my entire backpack. I have never felt so seen.”",
+   "sounds": [
+    {
+     "file": "FartSounds/monster_roar.wav",
+     "at": 0.3,
+     "volume": 1.0
+    }
+   ]
+  },
+  {
+   "image": "Shots/net/host_hud_touch.png",
+   "seconds": 8,
+   "where": "top",
+   "zoom": 1.04,
+   "title": "Multiplayer",
+   "text": "“We played each other over Wi-Fi. We no longer speak. Worth it.”",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/short_48.wav",
+     "at": 6.2,
+     "volume": 0.8,
+     "pitch": 1.0
+    }
+   ]
+  },
+  {
+   "image": "Shots/lite/05_floor1.png",
+   "seconds": 8,
+   "zoom": 1.06,
+   "title": "Runs on old phones",
+   "text": "“My old phone runs it. My old phone would like to know what it did to deserve this.”",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/short_04.wav",
+     "at": 6.4,
+     "volume": 0.6,
+     "pitch": 1.6
+    }
+   ]
+  },
+  {
+   "image": "Shots/desk/13_ranking.png",
+   "fit": "fit",
+   "seconds": 9,
+   "where": "top",
+   "zoom": 1.03,
+   "title": "Verdict: 12 out of 10",
+   "text": "“A breath of fresh air. Technically, the exact opposite.”",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/fanfare_39.wav",
+     "at": 1.2,
+     "volume": 0.9,
+     "pitch": 1.0
+    }
+   ]
+  },
+  {
+   "image": "Shots/desk/02_overview.png",
+   "where": "centre",
+   "seconds": 6.5,
+   "zoom": 1.08,
+   "title": "Play it.",
+   "text": "Then open a window.   github.com/xjrk58/unity-hra",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/short_23.wav",
+     "at": 2.6,
+     "volume": 0.8,
+     "pitch": 1.3
+    }
+   ]
+  }
+ ]
+}

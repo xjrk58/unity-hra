@@ -1,0 +1,261 @@
+{
+ "brand": "Prdivý závod – how to play",
+ "music": true,
+ "music_volume": 0.28,
+ "slides": [
+  {
+   "image": "Shots/desk/02_overview.png",
+   "where": "centre",
+   "seconds": 5.5,
+   "zoom": 1.1,
+   "title": "Prdivý závod",
+   "text": "How to play – a serious instructional film",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/long_18.wav",
+     "at": 2.6,
+     "volume": 1.0,
+     "pitch": 1.0
+    }
+   ]
+  },
+  {
+   "image": "Shots/desk/12_top.png",
+   "seconds": 9,
+   "zoom": 1.08,
+   "title": "The sport",
+   "text": "You are an athlete. Your discipline: collecting farts in a backpack and releasing them where it counts. First to deliver 15 wins. Yes, really.",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/short_23.wav",
+     "at": 7.4,
+     "volume": 0.8,
+     "pitch": 1.0
+    }
+   ]
+  },
+  {
+   "image": "Shots/net/menu_main.png",
+   "seconds": 7,
+   "where": "top",
+   "zoom": 1.04,
+   "title": "Getting started",
+   "text": "Choose “Hrát sám”. It means “play alone” – which is how anyone who farts this much ends up anyway.",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/short_04.wav",
+     "at": 5.4,
+     "volume": 0.6,
+     "pitch": 1.5
+    }
+   ]
+  },
+  {
+   "image": "Shots/desk/00_hud.png",
+   "fit": "fit",
+   "seconds": 8,
+   "zoom": 1.03,
+   "title": "On a computer",
+   "text": "W A S D: run.   Mouse: look around innocently.   Shift: sprint.   Space: jump – purely for dramatic effect.",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/short_13.wav",
+     "at": 6.3,
+     "volume": 0.6,
+     "pitch": 1.7
+    }
+   ]
+  },
+  {
+   "image": "Shots/mobile/00_hud.png",
+   "fit": "fit",
+   "seconds": 8,
+   "where": "top",
+   "zoom": 1.03,
+   "title": "On a phone",
+   "text": "Left thumb: run.   Right thumb: look.   SKOK: jump.   Your thumbs have trained for this their whole lives."
+  },
+  {
+   "image": "Shots/desk/06_pickups_deck0.png",
+   "seconds": 8.5,
+   "zoom": 1.1,
+   "pan": [
+    -60,
+    0
+   ],
+   "title": "Collect",
+   "text": "See the glowing green clouds? Walk into them. Do not try this at home. The backpack holds 8 – science cannot explain how.",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/short_02.wav",
+     "at": 1.0,
+     "volume": 0.5,
+     "pitch": 1.5
+    },
+    {
+     "file": "Assets/Resources/Audio/Farts/short_04.wav",
+     "at": 2.0,
+     "volume": 0.5,
+     "pitch": 1.6
+    },
+    {
+     "file": "Assets/Resources/Audio/Farts/short_13.wav",
+     "at": 3.0,
+     "volume": 0.5,
+     "pitch": 1.45
+    },
+    {
+     "file": "Assets/Resources/Audio/Farts/short_30.wav",
+     "at": 4.0,
+     "volume": 0.5,
+     "pitch": 1.7
+    }
+   ]
+  },
+  {
+   "image": "Shots/desk/04_goal.png",
+   "seconds": 8.5,
+   "zoom": 1.08,
+   "title": "Let it go",
+   "text": "Stand under the orange hood and hold the left mouse button. On a phone it happens by itself. The hood has seen things.",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/short_44.wav",
+     "at": 1.2,
+     "volume": 0.85,
+     "pitch": 1.0
+    },
+    {
+     "file": "Assets/Resources/Audio/Farts/short_47.wav",
+     "at": 1.9,
+     "volume": 0.85,
+     "pitch": 1.0
+    },
+    {
+     "file": "Assets/Resources/Audio/Farts/short_57.wav",
+     "at": 2.6,
+     "volume": 0.85,
+     "pitch": 1.0
+    },
+    {
+     "file": "Assets/Resources/Audio/Farts/short_65.wav",
+     "at": 3.3,
+     "volume": 0.85,
+     "pitch": 1.0
+    },
+    {
+     "file": "Assets/Resources/Audio/Farts/medium_12.wav",
+     "at": 6.6,
+     "volume": 0.9,
+     "pitch": 1.0
+    }
+   ]
+  },
+  {
+   "image": "Shots/desk/03_rival.png",
+   "seconds": 9.5,
+   "zoom": 1.07,
+   "title": "Blast a rival",
+   "text": "Aim at a rival and press the right mouse button – PRD! on a phone. It costs 2 farts. They vanish in a green cloud for 10 seconds. They will not thank you.",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/long_54.wav",
+     "at": 2.2,
+     "volume": 1.0,
+     "pitch": 1.0
+    }
+   ]
+  },
+  {
+   "image": "Shots/desk/20_monster_far.png",
+   "seconds": 7.5,
+   "zoom": 1.12,
+   "title": "After 45 seconds…",
+   "text": "…the lights go out. That smell? For once, it is not you.",
+   "sounds": [
+    {
+     "file": "FartSounds/monster_sting.wav",
+     "at": 0.2,
+     "volume": 0.9
+    }
+   ]
+  },
+  {
+   "image": "Shots/desk/21_monster_near.png",
+   "seconds": 9,
+   "zoom": 1.1,
+   "title": "Meet the fart monster",
+   "text": "It cannot be reasoned with. Sprint – walking is too slow – or blast it for 2 farts. It hates the taste of its own medicine.",
+   "sounds": [
+    {
+     "file": "FartSounds/monster_shriek.wav",
+     "at": 6.6,
+     "volume": 0.8
+    }
+   ]
+  },
+  {
+   "image": "Shots/desk/22_monster_catch.png",
+   "seconds": 6.5,
+   "zoom": 1.14,
+   "title": "If it catches you",
+   "text": "It eats your whole backpack. Rude.",
+   "sounds": [
+    {
+     "file": "FartSounds/monster_roar.wav",
+     "at": 0.3,
+     "volume": 1.0
+    }
+   ]
+  },
+  {
+   "image": "Shots/net/host_hud_touch.png",
+   "seconds": 9,
+   "where": "top",
+   "zoom": 1.04,
+   "title": "Bring a friend",
+   "text": "One device sets up a game and shows a code; the other joins on the same Wi-Fi, or over Bluetooth. The friendship may not survive.",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/short_48.wav",
+     "at": 7.6,
+     "volume": 0.8,
+     "pitch": 1.0
+    }
+   ]
+  },
+  {
+   "image": "Shots/desk/13_ranking.png",
+   "fit": "fit",
+   "seconds": 8,
+   "where": "top",
+   "zoom": 1.03,
+   "title": "Victory",
+   "text": "First to 15 wins and may call themselves champion. Quietly. Then press R – or tap – and do it all again.",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/fanfare_39.wav",
+     "at": 1.0,
+     "volume": 0.9,
+     "pitch": 1.0
+    }
+   ]
+  },
+  {
+   "image": "Shots/desk/02_overview.png",
+   "where": "centre",
+   "seconds": 6,
+   "zoom": 1.08,
+   "title": "Now go.",
+   "text": "Fart responsibly.   github.com/xjrk58/unity-hra",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/short_23.wav",
+     "at": 2.4,
+     "volume": 0.8,
+     "pitch": 1.3
+    }
+   ]
+  }
+ ]
+}

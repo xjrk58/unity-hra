@@ -1,0 +1,119 @@
+{
+ "brand": "Prdivý závod",
+ "music": false,
+ "loop": true,
+ "slides": [
+  {
+   "image": "Shots/desk/02_overview.png",
+   "seconds": 9,
+   "zoom": 1.1,
+   "title": "",
+   "text": ""
+  },
+  {
+   "image": "Shots/desk/06_pickups_deck0.png",
+   "seconds": 9,
+   "zoom": 1.1,
+   "title": "",
+   "text": ""
+  },
+  {
+   "image": "Shots/desk/04_goal.png",
+   "seconds": 9,
+   "zoom": 1.1,
+   "title": "",
+   "text": ""
+  },
+  {
+   "image": "Shots/desk/03_rival.png",
+   "seconds": 9,
+   "zoom": 1.1,
+   "title": "",
+   "text": ""
+  },
+  {
+   "image": "Shots/desk/05_floor1.png",
+   "seconds": 9,
+   "zoom": 1.1,
+   "title": "",
+   "text": ""
+  },
+  {
+   "image": "Shots/desk/20_monster_far.png",
+   "seconds": 9,
+   "zoom": 1.1,
+   "title": "",
+   "text": ""
+  },
+  {
+   "image": "Shots/desk/21_monster_near.png",
+   "seconds": 9,
+   "zoom": 1.1,
+   "title": "",
+   "text": ""
+  },
+  {
+   "image": "Shots/desk/23_monster_side.png",
+   "seconds": 9,
+   "zoom": 1.1,
+   "title": "",
+   "text": ""
+  },
+  {
+   "image": "Shots/desk/22_monster_catch.png",
+   "seconds": 9,
+   "zoom": 1.1,
+   "title": "",
+   "text": ""
+  },
+  {
+   "image": "Shots/net/menu_main.png",
+   "seconds": 9,
+   "zoom": 1.1,
+   "title": "",
+   "text": ""
+  },
+  {
+   "image": "Shots/net/host_hud_touch.png",
+   "seconds": 9,
+   "zoom": 1.1,
+   "title": "",
+   "text": ""
+  },
+  {
+   "image": "Shots/desk/07_roof.png",
+   "seconds": 9,
+   "zoom": 1.1,
+   "title": "",
+   "text": ""
+  },
+  {
+   "image": "Shots/desk/08_ramp.png",
+   "seconds": 9,
+   "zoom": 1.1,
+   "title": "",
+   "text": ""
+  },
+  {
+   "image": "Shots/desk/10_face.png",
+   "seconds": 9,
+   "zoom": 1.1,
+   "title": "",
+   "text": ""
+  },
+  {
+   "image": "Shots/desk/12_top.png",
+   "seconds": 9,
+   "zoom": 1.1,
+   "title": "",
+   "text": ""
+  },
+  {
+   "image": "Shots/desk/09_sunward.png",
+   "seconds": 9,
+   "zoom": 1.1,
+   "title": "",
+   "text": ""
+  }
+ ]
+}

@@ -1,0 +1,204 @@
+{
+ "brand": "Prdivý závod – recenze (zcela vymyšlené)",
+ "music": true,
+ "music_volume": 0.28,
+ "slides": [
+  {
+   "image": "Shots/desk/02_overview.png",
+   "where": "centre",
+   "seconds": 5.5,
+   "zoom": 1.1,
+   "title": "Prdivý závod",
+   "text": "Recenze jsou tady",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/medium_12.wav",
+     "at": 2.4,
+     "volume": 1.0,
+     "pitch": 1.0
+    }
+   ]
+  },
+  {
+   "image": "Shots/desk/09_sunward.png",
+   "seconds": 7.5,
+   "zoom": 1.08,
+   "title": "★★★★★",
+   "text": "„Triumf žánru. Ten žánr neexistuje.“   — Denní Závan",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/short_23.wav",
+     "at": 5.6,
+     "volume": 0.8,
+     "pitch": 1.0
+    }
+   ]
+  },
+  {
+   "image": "Shots/desk/05_floor1.png",
+   "seconds": 8,
+   "zoom": 1.08,
+   "title": "Grafika: 10/10",
+   "text": "„Ten beton je tak realistický, že jsem si pak zkontroloval boty.“   — Týdeník přátel parkovišť"
+  },
+  {
+   "image": "Shots/desk/06_pickups_deck0.png",
+   "seconds": 8.5,
+   "zoom": 1.1,
+   "pan": [
+    -60,
+    0
+   ],
+   "title": "Zvuk: 11/10",
+   "text": "„63 skutečných nahrávek z rozhlasového archivu z roku 1986. Něčí hvězdná chvíle, uchovaná pro vědu.“",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/short_44.wav",
+     "at": 1.0,
+     "volume": 0.85,
+     "pitch": 1.0
+    },
+    {
+     "file": "Assets/Resources/Audio/Farts/short_47.wav",
+     "at": 1.7,
+     "volume": 0.85,
+     "pitch": 1.0
+    },
+    {
+     "file": "Assets/Resources/Audio/Farts/long_18.wav",
+     "at": 2.6,
+     "volume": 1.0,
+     "pitch": 1.0
+    },
+    {
+     "file": "Assets/Resources/Audio/Farts/short_13.wav",
+     "at": 6.9,
+     "volume": 0.6,
+     "pitch": 1.6
+    }
+   ]
+  },
+  {
+   "image": "Shots/desk/04_goal.png",
+   "seconds": 8,
+   "zoom": 1.08,
+   "title": "Hratelnost: 9/10",
+   "text": "„Sbírej. Nes. Vypusť. Je to jako rodičovství, jen rychlejší a s tabulkou skóre.“",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/short_57.wav",
+     "at": 6.2,
+     "volume": 0.8,
+     "pitch": 1.0
+    }
+   ]
+  },
+  {
+   "image": "Shots/desk/10_face.png",
+   "seconds": 8.5,
+   "zoom": 1.08,
+   "title": "Soupeři",
+   "text": "„Pšouk po mně prdnul zezadu ve druhém patře. Respektuji ho. Neodpustím mu.“",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/long_54.wav",
+     "at": 1.6,
+     "volume": 1.0,
+     "pitch": 1.0
+    }
+   ]
+  },
+  {
+   "image": "Shots/desk/20_monster_far.png",
+   "seconds": 8,
+   "zoom": 1.12,
+   "title": "Horor: 10/10",
+   "text": "„Zařval jsem. Zařval i telefon. Sousedé se odstěhovali.“   — Měsíčník Větry",
+   "sounds": [
+    {
+     "file": "FartSounds/monster_sting.wav",
+     "at": 0.2,
+     "volume": 0.9
+    }
+   ]
+  },
+  {
+   "image": "Shots/desk/22_monster_catch.png",
+   "seconds": 7.5,
+   "zoom": 1.14,
+   "title": "★★★★★",
+   "text": "„Sežrala mi celý batůžek. Nikdy jsem se necítil tak pochopený.“",
+   "sounds": [
+    {
+     "file": "FartSounds/monster_roar.wav",
+     "at": 0.3,
+     "volume": 1.0
+    }
+   ]
+  },
+  {
+   "image": "Shots/net/host_hud_touch.png",
+   "seconds": 8,
+   "where": "top",
+   "zoom": 1.04,
+   "title": "Hra pro dva",
+   "text": "„Hráli jsme proti sobě přes Wi-Fi. Už spolu nemluvíme. Stálo to za to.“",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/short_48.wav",
+     "at": 6.2,
+     "volume": 0.8,
+     "pitch": 1.0
+    }
+   ]
+  },
+  {
+   "image": "Shots/lite/05_floor1.png",
+   "seconds": 8,
+   "zoom": 1.06,
+   "title": "Běží i na starém telefonu",
+   "text": "„Můj starý telefon to rozjede. Jen by rád věděl, čím si to zasloužil.“",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/short_04.wav",
+     "at": 6.4,
+     "volume": 0.6,
+     "pitch": 1.6
+    }
+   ]
+  },
+  {
+   "image": "Shots/desk/13_ranking.png",
+   "fit": "fit",
+   "seconds": 9,
+   "where": "top",
+   "zoom": 1.03,
+   "title": "Verdikt: 12 z 10",
+   "text": "„Závan čerstvého vzduchu. Technicky vzato přesný opak.“",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/fanfare_39.wav",
+     "at": 1.2,
+     "volume": 0.9,
+     "pitch": 1.0
+    }
+   ]
+  },
+  {
+   "image": "Shots/desk/02_overview.png",
+   "where": "centre",
+   "seconds": 6.5,
+   "zoom": 1.08,
+   "title": "Zahraj si to.",
+   "text": "A pak vyvětrej.   github.com/xjrk58/unity-hra",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/short_23.wav",
+     "at": 2.6,
+     "volume": 0.8,
+     "pitch": 1.3
+    }
+   ]
+  }
+ ]
+}

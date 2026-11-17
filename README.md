@@ -17,6 +17,17 @@ z podlahy vyleze prdová příšera.
 |---|---|
 | ![A match in daylight](docs/images/match.jpg) | ![Touch controls](docs/images/touch.jpg) |
 
+## Videos / Videa
+
+| | English | Česky |
+|---|---|---|
+| How to play – a serious instructional film | [how-to-play-en.mp4](Videos/how-to-play-en.mp4) | [jak-se-to-hraje-cs.mp4](Videos/jak-se-to-hraje-cs.mp4) |
+| The reviews are in (entirely made up) | [review-en.mp4](Videos/review-en.mp4) | [recenze-cs.mp4](Videos/recenze-cs.mp4) |
+
+Made from the game's own screenshots and sounds by the scripts in
+[`Tools/video`](Tools/video/README.md), which can also turn a NotebookLM
+podcast about the game into a video.
+
 ## What is in it / Co ve hře je
 
 - A match for one player and two bots, or **two players on two devices**

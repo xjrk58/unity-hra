@@ -1,0 +1,261 @@
+{
+ "brand": "Prdivý závod – jak se to hraje",
+ "music": true,
+ "music_volume": 0.28,
+ "slides": [
+  {
+   "image": "Shots/desk/02_overview.png",
+   "where": "centre",
+   "seconds": 5.5,
+   "zoom": 1.1,
+   "title": "Prdivý závod",
+   "text": "Jak se to hraje – vážný instruktážní film",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/long_18.wav",
+     "at": 2.6,
+     "volume": 1.0,
+     "pitch": 1.0
+    }
+   ]
+  },
+  {
+   "image": "Shots/desk/12_top.png",
+   "seconds": 9,
+   "zoom": 1.08,
+   "title": "O jaký sport jde",
+   "text": "Jsi sportovec. Tvoje disciplína: sbírat prdy do batůžku a vypouštět je tam, kde se to počítá. Kdo jich první donese 15, vyhrává. Ano, vážně.",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/short_23.wav",
+     "at": 7.4,
+     "volume": 0.8,
+     "pitch": 1.0
+    }
+   ]
+  },
+  {
+   "image": "Shots/net/menu_main.png",
+   "seconds": 7,
+   "where": "top",
+   "zoom": 1.04,
+   "title": "Jak začít",
+   "text": "Zvol „Hrát sám“. Kdo tolik prdí, stejně nakonec hraje sám.",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/short_04.wav",
+     "at": 5.4,
+     "volume": 0.6,
+     "pitch": 1.5
+    }
+   ]
+  },
+  {
+   "image": "Shots/desk/00_hud.png",
+   "fit": "fit",
+   "seconds": 8,
+   "zoom": 1.03,
+   "title": "Na počítači",
+   "text": "W A S D: běh.   Myš: nevinné rozhlížení.   Shift: sprint.   Mezerník: skok – čistě pro dramatický efekt.",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/short_13.wav",
+     "at": 6.3,
+     "volume": 0.6,
+     "pitch": 1.7
+    }
+   ]
+  },
+  {
+   "image": "Shots/mobile/00_hud.png",
+   "fit": "fit",
+   "seconds": 8,
+   "where": "top",
+   "zoom": 1.03,
+   "title": "Na telefonu",
+   "text": "Levý palec: běh.   Pravý palec: rozhlížení.   SKOK: skok.   Na tohle tvoje palce trénovaly celý život."
+  },
+  {
+   "image": "Shots/desk/06_pickups_deck0.png",
+   "seconds": 8.5,
+   "zoom": 1.1,
+   "pan": [
+    -60,
+    0
+   ],
+   "title": "Sbírej",
+   "text": "Vidíš ty svítící zelené obláčky? Vběhni do nich. Doma to nezkoušej. Do batůžku se jich vejde 8 – věda neví jak.",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/short_02.wav",
+     "at": 1.0,
+     "volume": 0.5,
+     "pitch": 1.5
+    },
+    {
+     "file": "Assets/Resources/Audio/Farts/short_04.wav",
+     "at": 2.0,
+     "volume": 0.5,
+     "pitch": 1.6
+    },
+    {
+     "file": "Assets/Resources/Audio/Farts/short_13.wav",
+     "at": 3.0,
+     "volume": 0.5,
+     "pitch": 1.45
+    },
+    {
+     "file": "Assets/Resources/Audio/Farts/short_30.wav",
+     "at": 4.0,
+     "volume": 0.5,
+     "pitch": 1.7
+    }
+   ]
+  },
+  {
+   "image": "Shots/desk/04_goal.png",
+   "seconds": 8.5,
+   "zoom": 1.08,
+   "title": "Pusť to ven",
+   "text": "Stoupni si pod oranžovou digestoř a drž levé tlačítko myši. Na telefonu to jde samo. Ta digestoř už viděla ledacos.",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/short_44.wav",
+     "at": 1.2,
+     "volume": 0.85,
+     "pitch": 1.0
+    },
+    {
+     "file": "Assets/Resources/Audio/Farts/short_47.wav",
+     "at": 1.9,
+     "volume": 0.85,
+     "pitch": 1.0
+    },
+    {
+     "file": "Assets/Resources/Audio/Farts/short_57.wav",
+     "at": 2.6,
+     "volume": 0.85,
+     "pitch": 1.0
+    },
+    {
+     "file": "Assets/Resources/Audio/Farts/short_65.wav",
+     "at": 3.3,
+     "volume": 0.85,
+     "pitch": 1.0
+    },
+    {
+     "file": "Assets/Resources/Audio/Farts/medium_12.wav",
+     "at": 6.6,
+     "volume": 0.9,
+     "pitch": 1.0
+    }
+   ]
+  },
+  {
+   "image": "Shots/desk/03_rival.png",
+   "seconds": 9.5,
+   "zoom": 1.07,
+   "title": "Prdni po soupeři",
+   "text": "Zamiř na soupeře a stiskni pravé tlačítko myši – na telefonu PRD!. Stojí to 2 prdy. Soupeř na 10 vteřin zmizí v zeleném oblaku. Nepoděkuje ti.",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/long_54.wav",
+     "at": 2.2,
+     "volume": 1.0,
+     "pitch": 1.0
+    }
+   ]
+  },
+  {
+   "image": "Shots/desk/20_monster_far.png",
+   "seconds": 7.5,
+   "zoom": 1.12,
+   "title": "Po 45 vteřinách…",
+   "text": "…zhasnou světla. Ten smrad? Tentokrát to nejsi ty.",
+   "sounds": [
+    {
+     "file": "FartSounds/monster_sting.wav",
+     "at": 0.2,
+     "volume": 0.9
+    }
+   ]
+  },
+  {
+   "image": "Shots/desk/21_monster_near.png",
+   "seconds": 9,
+   "zoom": 1.1,
+   "title": "Seznam se: prdová příšera",
+   "text": "Domluvit se s ní nedá. Sprintuj – chůze nestačí – nebo po ní prdni za 2 prdy. Vlastní medicína jí nechutná.",
+   "sounds": [
+    {
+     "file": "FartSounds/monster_shriek.wav",
+     "at": 6.6,
+     "volume": 0.8
+    }
+   ]
+  },
+  {
+   "image": "Shots/desk/22_monster_catch.png",
+   "seconds": 6.5,
+   "zoom": 1.14,
+   "title": "Když tě chytí",
+   "text": "Sežere ti celý batůžek. Nevychovanec.",
+   "sounds": [
+    {
+     "file": "FartSounds/monster_roar.wav",
+     "at": 0.3,
+     "volume": 1.0
+    }
+   ]
+  },
+  {
+   "image": "Shots/net/host_hud_touch.png",
+   "seconds": 9,
+   "where": "top",
+   "zoom": 1.04,
+   "title": "Vezmi kamaráda",
+   "text": "Jedno zařízení hru založí a ukáže kód; druhé se připojí na stejné Wi-Fi, nebo přes Bluetooth. Kamarádství to nemusí přežít.",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/short_48.wav",
+     "at": 7.6,
+     "volume": 0.8,
+     "pitch": 1.0
+    }
+   ]
+  },
+  {
+   "image": "Shots/desk/13_ranking.png",
+   "fit": "fit",
+   "seconds": 8,
+   "where": "top",
+   "zoom": 1.03,
+   "title": "Vítězství",
+   "text": "Kdo první donese 15, vyhrál a smí si říkat šampion. Potichu. Pak stiskni R – nebo ťukni – a hraje se znovu.",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/fanfare_39.wav",
+     "at": 1.0,
+     "volume": 0.9,
+     "pitch": 1.0
+    }
+   ]
+  },
+  {
+   "image": "Shots/desk/02_overview.png",
+   "where": "centre",
+   "seconds": 6,
+   "zoom": 1.08,
+   "title": "A teď běž.",
+   "text": "Prdi zodpovědně.   github.com/xjrk58/unity-hra",
+   "sounds": [
+    {
+     "file": "Assets/Resources/Audio/Farts/short_23.wav",
+     "at": 2.4,
+     "volume": 0.8,
+     "pitch": 1.3
+    }
+   ]
+  }
+ ]
+}
