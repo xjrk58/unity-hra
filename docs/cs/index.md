@@ -23,6 +23,7 @@ Začni tady, pokud je pro tebe hra nebo projekt nový.
 - [Sestavení na Macu s Apple silicon (M1 a novější)](how-to/build-on-a-mac-with-apple-silicon.md)
 - [Sestavení APK pro Android](how-to/build-the-android-apk.md)
 - [Sestavení pro staré telefony s Androidem](how-to/build-for-old-android-phones.md)
+- [Sestavení balíčků v GitHub Actions](how-to/build-in-github-actions.md)
 - [Instalace hry na telefon s Androidem](how-to/install-on-an-android-phone.md)
 - [Hra ve dvou](how-to/play-with-two-players.md)
 - [Spuštění automatických kontrol](how-to/run-the-automated-checks.md)

@@ -18,6 +18,7 @@ manager. Žádné další balíčky a žádný obsah z Asset Store.
 | `Assets/Plugins/Android/BtLink.androidlib` | pomocná třída v Javě a manifest pro hru přes Bluetooth |
 | `Assets/Icon.png` | ikona aplikace |
 | `Tools/assets`, `Tools/blender`, `Tools/dev` | skripty, které vytvářejí assety; test spojení |
+| `.github/workflows/build.yml` | sestavuje balíčky na GitHubu ([jak](../how-to/build-in-github-actions.md)) |
 | `docs/` | tahle dokumentace, anglicky a česky |
 | `Builds/`, `Logs/`, `Shots/`, `FartSounds/`, `Library/` | výstupy; nejsou v gitu |
 

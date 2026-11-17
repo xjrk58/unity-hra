@@ -35,6 +35,7 @@ publication.
 | Bluetooth play | compiles and is packaged; never run – it needs two paired Android devices |
 | Two phones playing each other; a phone *joining* a game (only hosting was tried) | never run |
 | Finding a game in the list (UDP announcements) between devices | never observed; the development computer's firewall blocks incoming traffic, so it joined by address |
+| The GitHub Actions workflow | written, never run: it needs a Unity licence in the repository's secrets |
 | macOS build | never built or run; the guide follows the build script and Unity's usual workflow |
 | Windows build | never built or run |
 | Frame rate on any phone | not measured |

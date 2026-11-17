@@ -18,6 +18,7 @@ input manager. No other packages and no Asset Store content.
 | `Assets/Plugins/Android/BtLink.androidlib` | Java helper and manifest for Bluetooth play |
 | `Assets/Icon.png` | app icon |
 | `Tools/assets`, `Tools/blender`, `Tools/dev` | scripts that produce the assets; link test |
+| `.github/workflows/build.yml` | builds the packages on GitHub ([how](../how-to/build-in-github-actions.md)) |
 | `docs/` | this documentation, English and Czech |
 | `Builds/`, `Logs/`, `Shots/`, `FartSounds/`, `Library/` | outputs; not in git |
 

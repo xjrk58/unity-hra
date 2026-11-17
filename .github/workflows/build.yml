@@ -1,0 +1,134 @@
+# Builds the game's packages on GitHub's machines with GameCI (https://game.ci):
+# Linux, Windows and macOS builds and the two Android APKs.
+#
+# It needs a Unity licence, given to the repository as three secrets:
+# UNITY_LICENSE, UNITY_EMAIL and UNITY_PASSWORD. Until they exist the jobs
+# finish at once with a warning. How to set them up:
+# docs/en/how-to/build-in-github-actions.md
+name: Build packages
+
+on:
+  push:
+    branches: [master]
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: ${{ matrix.name }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # Desktop builds use GameCI's own build method (the scene list and the
+          # player settings come from the project); the result lands in
+          # Builds/<target>/.
+          - name: Linux
+            targetPlatform: StandaloneLinux64
+            buildMethod: ''
+            output: Builds/StandaloneLinux64
+            artifact: PrdivyZavod-linux
+          - name: Windows
+            targetPlatform: StandaloneWindows64
+            buildMethod: ''
+            output: Builds/StandaloneWindows64
+            artifact: PrdivyZavod-windows
+          - name: macOS
+            targetPlatform: StandaloneOSX
+            buildMethod: ''
+            output: Builds/StandaloneOSX
+            artifact: PrdivyZavod-macos
+          # The Android builds go through the project's own build script, which
+          # sets architecture, minimum Android version and graphics level.
+          - name: Android
+            targetPlatform: Android
+            buildMethod: BuildGame.BuildAndroid
+            output: Builds/Android/PrdivyZavod.apk
+            artifact: PrdivyZavod-android
+          - name: Android (old phones)
+            targetPlatform: Android
+            buildMethod: BuildGame.BuildAndroidOld
+            output: Builds/Android/PrdivyZavod-old.apk
+            artifact: PrdivyZavod-android-old
+
+    steps:
+      - name: Check for the Unity licence
+        id: licence
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        run: |
+          if [ -z "$UNITY_LICENSE" ]; then
+            echo "::warning::The UNITY_LICENSE secret is not set, so nothing was built. See docs/en/how-to/build-in-github-actions.md"
+            echo "present=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check out the project
+        if: steps.licence.outputs.present == 'true'
+        uses: actions/checkout@v7
+
+      # The Android build image is large; make room for it.
+      - name: Free disk space
+        if: steps.licence.outputs.present == 'true' && matrix.targetPlatform == 'Android'
+        run: |
+          sudo rm -rf /usr/share/dotnet /opt/ghc /usr/local/share/boost /usr/local/lib/android
+          df -h /
+
+      # Unity's import cache: the first build of a platform imports every asset.
+      - name: Restore the Library cache
+        if: steps.licence.outputs.present == 'true'
+        uses: actions/cache@v6
+        with:
+          path: Library
+          key: Library-${{ matrix.targetPlatform }}-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-${{ matrix.targetPlatform }}-
+
+      - name: Build with Unity
+        if: steps.licence.outputs.present == 'true'
+        uses: game-ci/unity-builder@v6
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          targetPlatform: ${{ matrix.targetPlatform }}
+          unityVersion: auto
+          buildMethod: ${{ matrix.buildMethod }}
+          buildName: PrdivyZavod
+          buildsPath: Builds
+          versioning: None
+          allowDirtyBuild: true
+
+      # Desktop builds are folders with files that must stay executable: pack
+      # them as .tar.gz. An APK is uploaded as it is.
+      - name: Pack
+        if: steps.licence.outputs.present == 'true'
+        run: |
+          mkdir -p dist
+          if [ -d "${{ matrix.output }}" ]; then
+            sudo tar -czf "dist/${{ matrix.artifact }}.tar.gz" -C "${{ matrix.output }}" .
+          else
+            sudo cp "${{ matrix.output }}" dist/
+          fi
+          sudo chown -R "$(id -u):$(id -g)" dist
+          ls -la dist
+
+      - name: Upload the package
+        if: steps.licence.outputs.present == 'true'
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ matrix.artifact }}
+          path: dist/*
+          if-no-files-found: error
+          retention-days: 30

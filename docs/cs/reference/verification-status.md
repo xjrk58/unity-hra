@@ -35,6 +35,7 @@ prvním zveřejnění.
 | Hra přes Bluetooth | přeloží se a je zabalená; nikdy nespuštěna – potřebuje dvě spárovaná zařízení s Androidem |
 | Dva telefony proti sobě; telefon, který se ke hře *připojuje* (vyzkoušeno bylo jen hostování) | nikdy nespuštěno |
 | Nalezení hry v seznamu (oznámení přes UDP) mezi zařízeními | nikdy nepozorováno; firewall vývojového počítače blokuje příchozí provoz, takže se připojoval přes adresu |
+| Workflow pro GitHub Actions | napsané, nikdy nespuštěné: potřebuje licenci Unity v tajných údajích repozitáře |
 | Sestavení pro macOS | nikdy nesestaveno ani nespuštěno; návod vychází ze sestavovacího skriptu a obvyklého postupu Unity |
 | Sestavení pro Windows | nikdy nesestaveno ani nespuštěno |
 | Snímková frekvence na jakémkoli telefonu | neměřena |

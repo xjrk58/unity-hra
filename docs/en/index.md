@@ -23,6 +23,7 @@ Start here if the game or the project is new to you.
 - [Build on a Mac with Apple silicon (M1 and later)](how-to/build-on-a-mac-with-apple-silicon.md)
 - [Build the Android APK](how-to/build-the-android-apk.md)
 - [Build for old Android phones](how-to/build-for-old-android-phones.md)
+- [Build the packages in GitHub Actions](how-to/build-in-github-actions.md)
 - [Install the game on an Android phone](how-to/install-on-an-android-phone.md)
 - [Play with two players](how-to/play-with-two-players.md)
 - [Run the automated checks](how-to/run-the-automated-checks.md)
