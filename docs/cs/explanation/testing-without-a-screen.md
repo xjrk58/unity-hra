@@ -58,9 +58,11 @@ skutečné obrazovce, takže se pro fotografii zavěsí před kameru.
 - **Skutečná zařízení.** Grafický čip telefonu, jeho oprávnění, jeho zvyk
   opustit Wi-Fi, když zhasne obrazovka.
 
-Každá z těch věcí se aspoň jednou vymstila. Testovací sestavení, které na
-počítači vypadalo dobře, na telefonu zamrzlo a telefon pak vypadl ze sítě
-dřív, než se dal přečíst jeho log. Poctivý seznam toho, co se nevyzkoušelo, je
+Každá z těch věcí se aspoň jednou vymstila. Sestavení, které na počítači
+vypadalo dobře, zůstalo na telefonu na černé obrazovce – dvakrát – a telefon
+vypadl ze sítě dřív, než se dal přečíst jeho log. O dva dny později log ukázal
+proč: aplikace byla ve stejné vteřině spuštěna z počítače i ťuknutím na ikonu.
+Nic, co by test na počítači kdy našel. Poctivý seznam toho, co se nevyzkoušelo, je
 [Stav ověření](../reference/verification-status.md).
 
 ## Dvě poučení ze samotných testů

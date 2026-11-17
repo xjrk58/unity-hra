@@ -24,17 +24,17 @@ prvním zveřejnění.
 
 | Co | Zařízení | Výsledek |
 |----|----------|----------|
-| **První** sestavení pro Android – ještě než existovalo menu, příšera, hra ve dvou a Bluetooth | jeden současný špičkový telefon, Android 17 | nainstalovalo se, vykreslovalo správně, dalo se hrát dotykovým ovládáním, v logu žádné chyby |
+| Standardní sestavení pro Android: menu, sólové zápasy, výraznější prdy, příšera | jeden současný špičkový telefon, Android 17 | nainstalováno a hráno; zápas se postaví za 0,02–0,14 s; příšera se objevila a hráče chytila (lekačka proběhla); v logu žádné chyby |
+| Dva hráči přes Wi-Fi | tento telefon jako hostitel, linuxový počítač připojený přes adresu s hráčem, který hraje sám | čtyři zápasy za sebou: obě zařízení postavila každý zápas, skóre i prdnutí seděly, o nový zápas požádal připojený hráč; žádné chyby na žádné straně |
 
 ## Nespuštěno
 
 | Oblast | Stav |
 |--------|------|
-| Jakékoli sestavení pro Android od toho prvního | sestaveno, na zařízení nikdy nespuštěno. Jedno průběžné testovací sestavení zamrzlo na černé obrazovce hned po instalaci a spuštění z počítače; příčina se nezjistila (log ukazuje spíš na to, že aplikace byla spuštěna dvakrát najednou, než na kód hry). |
 | APK pro staré telefony na starém nebo 32bitovém zařízení | nikdy nespuštěno |
 | Hra přes Bluetooth | přeloží se a je zabalená; nikdy nespuštěna – potřebuje dvě spárovaná zařízení s Androidem |
-| Dva hráči na dvou samostatných zařízeních přes Wi-Fi | nikdy nespuštěno; jen dva procesy na jednom počítači |
-| Nalezení hry v seznamu (oznámení přes UDP) mezi zařízeními | nikdy nepozorováno; firewall vývojového počítače blokuje příchozí provoz |
+| Dva telefony proti sobě; telefon, který se ke hře *připojuje* (vyzkoušeno bylo jen hostování) | nikdy nespuštěno |
+| Nalezení hry v seznamu (oznámení přes UDP) mezi zařízeními | nikdy nepozorováno; firewall vývojového počítače blokuje příchozí provoz, takže se připojoval přes adresu |
 | Sestavení pro macOS | nikdy nesestaveno ani nespuštěno; návod vychází ze sestavovacího skriptu a obvyklého postupu Unity |
 | Sestavení pro Windows | nikdy nesestaveno ani nespuštěno |
 | Snímková frekvence na jakémkoli telefonu | neměřena |
@@ -48,6 +48,11 @@ obsah (dost energie nad 150 Hz, aby prošly reproduktorem telefonu), ale nikdo
 je neposoudil sluchem. Nahrávky prdů poslechnuté byly.
 
 ## Známá slabá místa
+
+- Když se aplikace spustí z počítače (`adb … am start`) ve stejnou chvíli, kdy
+  někdo ťukne na její ikonu, spustí se dvakrát a zůstane na černé obrazovce,
+  dokud ji nevynutíš ukončit. Při testování se to stalo dvakrát a vypadalo to
+  jako zamrzlé sestavení. Spouštěj ji jedním způsobem a jednou.
 
 - Samotní boti dohrají zápas asi za 45–80 sekund, takže příšera (45 s) může
   dorazit, když je zápas skoro u konce.

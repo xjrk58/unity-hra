@@ -58,9 +58,12 @@ real screen, so for the photograph it is hung in front of the camera.
 - **Real devices.** A phone's graphics chip, its permissions, its habit of
   leaving the Wi-Fi when the screen goes dark.
 
-Each of these bit at least once. A test build that looked fine on the computer
-froze on a phone, and the phone then dropped off the network before its log
-could be read. The honest list of what has not been tried is
+Each of these bit at least once. A build that looked fine on the computer sat
+on a black screen on a phone – twice – and the phone dropped off the network
+before its log could be read. Two days later the log showed why: the app had
+been started from the computer and from its icon in the same second. Nothing a
+test on the computer would ever have found. The honest list of what has not
+been tried is
 [Verification status](../reference/verification-status.md).
 
 ## Two lessons from the tests themselves

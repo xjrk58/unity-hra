@@ -62,10 +62,10 @@ Written the [Diátaxis](https://diataxis.fr) way, in both languages:
 
 ## Status / Stav
 
-Developed and tested on one Linux computer. The first Android build was played
-on a phone; later builds (menu, monster, two-player, Bluetooth, old-phone
-variant) and the macOS and Windows builds have **not** been run on real
-devices yet. The honest list is in
+Developed and tested on one Linux computer. The standard Android build has
+been played on one phone, alone and as the host of a two-player match over
+Wi-Fi. Bluetooth play, the old-phone variant and the macOS and Windows builds
+have **not** been run on real devices yet. The honest list is in
 [Verification status](docs/en/reference/verification-status.md) /
 [Stav ověření](docs/cs/reference/verification-status.md).
 
