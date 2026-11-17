@@ -28,15 +28,19 @@ Needs Blender 4.
 blender -b --factory-startup -P Tools/blender/build_character.py     # the competitors
 blender -b --factory-startup -P Tools/blender/build_kit.py           # railing, column, lamp, goal
 blender -b --factory-startup -P Tools/blender/build_monster.py -- --preview Shots/monster
+blender -b --factory-startup -P Tools/blender/build_horse.py -- --preview Shots/horse     # horses and unicorns: one model
 ```
 
 Each writes `.fbx` files into `Assets/Resources/Models`. `--preview DIR` also
-renders pictures of the monster. The game finds parts of a model by the names
-of objects and material slots, so keep those when you edit a script.
+renders pictures of the monster, or of the horse and the unicorn. The game
+finds parts of a model by the names of objects and material slots, so keep
+those when you edit a script. A horse and a unicorn are the same model: the
+game shows the horn on unicorns only and gives every animal its own coat.
 
 One trap: the exporter only places **direct children of the root object**
 correctly. A part nested deeper loses its position; hang it on the root in the
-file and re-parent it in game code (the monster's jaw does this).
+file and re-parent it in game code (the monster's jaw and the unicorn's horn
+do this).
 
 ## Textures, sky and props (Poly Haven, CC0)
 

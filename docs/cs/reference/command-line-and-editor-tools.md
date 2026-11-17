@@ -27,8 +27,9 @@ Vždycky předej `-buildTarget` (`StandaloneLinux64`, `StandaloneWindows64`,
 | `PlaytestRunner.Run` | `-playtestSeconds N` (240), `-playtestMinFloor F` (0) | **ne** | `[Playtest] PASS` / `FAIL` | 0, 2 |
 | `TouchTestRunner.Run` | potřebuje `-touchHud` | **ne** | `[TouchTest] PASS` / `FAIL` | 0, 1, 2 = spuštěno bez `-touchHud` |
 | `MonsterTestRunner.Run` | – | **ne** | `[MonsterTest] PASS` / `FAIL` | 0, 1 |
+| `AnimalTestRunner.Run` | – | **ne** | `[AnimalTest] PASS` / `FAIL` | 0, 1 |
 
-Čtyři runnery označené **ne** vstoupí do režimu Play a editor ukončí samy.
+Runnery označené **ne** (je jich pět) vstoupí do režimu Play a editor ukončí samy.
 
 ## Volby samotné hry
 
@@ -47,7 +48,7 @@ Fungují v sestavené hře a tam, kde to dává smysl, i v editoru.
 | `-captureDelay SECONDS` | jak dlouho `-captureShot` čeká (výchozí 4) |
 | `-captureMenu` | nechá `-captureShot` vyfotit menu (s `-menu`, `-host` nebo `-menuJoin`) |
 | `-menuJoin` | otevře menu na stránce pro připojení |
-| `-netBot` | hráč hraje sám a do logu se každou sekundu zapíše řádek `[NetLog]` (testy spojení) |
+| `-netBot` | hráč hraje sám a do logu se každou sekundu zapisují řádky `[NetLog]` (testy spojení) |
 | `-netBlastAt SECONDS` | s `-netBot`: kdy hostitel prdne po připojeném hráči (výchozí 10) |
 | `-netWinAt SECONDS` | s `-netBot` na hostiteli: v tom čase ukončí první zápas |
 | `-logFile FILE` | (Unity) kam se zapisuje log |
@@ -60,9 +61,9 @@ Fungují v sestavené hře a tam, kde to dává smysl, i v editoru.
 | `[Boot]` | `GameBootstrap` | jak dlouho trvalo postavení světa |
 | `[Net]` | `NetLink`, `NetGame` | spojení a úvodní domluva zápasu |
 | `[Bt]` | `BluetoothLink` | problémy s Bluetooth |
-| `[NetLog]` | `NetBot` | jeden stavový řádek za sekundu v testech spojení |
+| `[NetLog]` | `NetBot` | dva stavové řádky za sekundu v testech spojení: zápas a zvířata s jejich prdy |
 | `[Monster]` | `FartMonster` | hráč tohohle zařízení byl chycen |
-| `[Playtest]`, `[TouchTest]`, `[MonsterTest]` | runnery | kontroly a verdikty |
+| `[Playtest]`, `[TouchTest]`, `[MonsterTest]`, `[AnimalTest]` | runnery | kontroly a verdikty |
 | `ShotRunner`, `DevCapture` | nástroje pro snímky obrazovky | zapsané soubory, benchmark |
 
 ## Skripty mimo Unity
@@ -70,7 +71,7 @@ Fungují v sestavené hře a tam, kde to dává smysl, i v editoru.
 | Skript | Účel |
 |--------|------|
 | `Tools/dev/nettest.sh HOST_SECONDS JOINER_SECONDS [host options]` | test hry ve dvou na jednom počítači; logy v `Logs/net-host.log`, `Logs/net-client.log` |
-| `Tools/blender/build_character.py`, `build_kit.py`, `build_monster.py` | sestaví modely (spouštěj přes `blender -b --factory-startup -P`) |
+| `Tools/blender/build_character.py`, `build_kit.py`, `build_monster.py`, `build_horse.py` | sestaví modely (spouštěj přes `blender -b --factory-startup -P`) |
 | `Tools/blender/verify_character.py` | kontroluje kosti modelu postavy |
 | `Tools/assets/fetch.py`, `process_textures.py`, `process_sky.py`, `hdr.py`, `convert_props.py` | stáhnou a připraví textury, oblohu a rekvizity z Poly Haven |
 | `Tools/assets/slice_farts.py` | rozřeže archivní nahrávku na klipy |

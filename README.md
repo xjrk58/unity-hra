@@ -4,18 +4,21 @@ A small first-person game made with Unity 6. Run around a four-storey car
 park, fill your backpack with floating green farts and expel them at the goal
 before the two bots do – or before a second player on another device does.
 About 45 seconds in, the lights fail and a fart monster comes up out of the
-floor.
+floor. Horses and unicorns wander the decks and fart too; a unicorn farts a
+rainbow.
 
 Malá hra z pohledu první osoby v Unity 6. Běhej po čtyřpatrovém parkovacím
 domě, nasbírej do batůžku zelené prdy a vyprdni je v cíli dřív než oba boti –
 nebo než druhý hráč na jiném zařízení. Asi po 45 vteřinách zhasnou světla a
-z podlahy vyleze prdová příšera.
+z podlahy vyleze prdová příšera. Po patrech se toulají koně a jednorožci a
+prdí taky; jednorožec prdí duhu.
 
 ![The monster closing in](docs/images/monster.jpg)
 
 | | |
 |---|---|
 | ![A match in daylight](docs/images/match.jpg) | ![Touch controls](docs/images/touch.jpg) |
+| ![A unicorn farting a rainbow](docs/images/unicorn.jpg) | ![A horse on the ground deck](docs/images/horse.jpg) |
 
 ## Videos / Videa
 
@@ -33,6 +36,10 @@ podcast about the game into a video.
 - A match for one player and two bots, or **two players on two devices**
   (Wi-Fi; Bluetooth between Android phones) – *hra pro jednoho, nebo pro dva
   hráče na dvou zařízeních (Wi-Fi, mezi telefony i Bluetooth)*.
+- Three **horses** and two **unicorns** that wander, step out of your way and
+  fart; a unicorn's rainbow leaves a rainbow fart worth three – *tři koně a
+  dva jednorožci, kteří se toulají, uhýbají a prdí; po duze jednorožce zůstane
+  duhový prd za tři*.
 - Desktop (Linux, Windows, macOS) with keyboard and mouse, **Android** with
   touch controls, plus a lighter build for old phones – *počítač i Android,
   včetně odlehčeného sestavení pro staré telefony*.
@@ -40,8 +47,8 @@ podcast about the game into a video.
   materials – *svět celý postavený kódem, realistické osvětlení a materiály*.
 - 63 real fart recordings; everything the monster says is synthesised –
   *63 skutečných nahrávek prdů; zvuky příšery jsou syntetické*.
-- Headless checks: bot matches, scripted touch input, the monster, two-player
-  over loopback – *automatické kontroly bez okna*.
+- Headless checks: bot matches, scripted touch input, the monster, the
+  animals, two-player over loopback – *automatické kontroly bez okna*.
 
 ## Quick start / Rychlý start
 
@@ -77,7 +84,8 @@ Written the [Diátaxis](https://diataxis.fr) way, in both languages:
 Developed and tested on one Linux computer. The standard Android build has
 been played on one phone, alone and as the host of a two-player match over
 Wi-Fi. Bluetooth play, the old-phone variant and the macOS and Windows builds
-have **not** been run on real devices yet. The honest list is in
+have **not** been run on real devices yet, and the horses and unicorns have
+only been checked on the computer. The honest list is in
 [Verification status](docs/en/reference/verification-status.md) /
 [Stav ověření](docs/cs/reference/verification-status.md).
 

@@ -27,10 +27,11 @@ grep -c "error CS" Logs/that-run.log      # must print 0
 
 | What | Command | Passed when the log has |
 |------|---------|-------------------------|
-| A bot match: bots collect, use ramps, deliver, never get stuck; then a restart | `$UNITY -executeMethod PlaytestRunner.Run -playtestSeconds 240 -logFile Logs/playtest.log` | `[Playtest] PASS` |
-| The same with farts only on the upper decks | add `-playtestMinFloor 2` | `[Playtest] PASS` |
+| A bot match: bots collect, use ramps, deliver, never get stuck; the animals fart; then a restart | `$UNITY -executeMethod PlaytestRunner.Run -playtestSeconds 240 -logFile Logs/playtest.log` | `[Playtest] PASS` |
+| The same with farts only on the upper decks, or only on the top one | add `-playtestMinFloor 2`, or `3` | `[Playtest] PASS` |
 | Touch controls, driven by scripted fingers | `$UNITY -executeMethod TouchTestRunner.Run -touchHud -logFile Logs/touch.log` | `[TouchTest] PASS (16 checks)` |
 | The monster: when it comes, hunting, catching, being driven off, restart | `$UNITY -executeMethod MonsterTestRunner.Run -logFile Logs/monster.log` | `[MonsterTest] PASS (22 checks)` |
+| The horses and unicorns: where they walk, where their farts land and what they are worth, shying away, restart | `$UNITY -executeMethod AnimalTestRunner.Run -logFile Logs/animals.log` | `[AnimalTest] PASS (26 checks)` |
 
 Do **not** add `-quit` to these: they enter Play mode and exit by themselves.
 Each takes one to two minutes; the exit code is 0 only on a pass.
@@ -43,9 +44,10 @@ $UNITY -executeMethod ShotRunner.Run -shotDir Shots/mobile  -touchHud -mobileQua
 $UNITY -executeMethod ShotRunner.Run -shotDir Shots/lite    -touchHud -liteQuality   -logFile Logs/shots-lite.log
 ```
 
-Each writes about two dozen PNG files: the player's view, the HUD, the arena
+Each writes nearly thirty PNG files: the player's view, the HUD, the arena
 from several angles, the farts, the monster far away, close and in your face
-(`20_`–`25_`), and the final ranking (`13_ranking`). The second and third
+(`20_`–`25_`), a horse and a unicorn in the middle of a rainbow fart
+(`30_`–`33_`), and the final ranking (`13_ranking`). The second and third
 commands show what a phone and an old phone render
 ([Graphics tiers](../reference/graphics-tiers.md)). The log also carries a
 rough frame time: `ShotRunner benchmark: … ms per 1080p frame`.
@@ -66,6 +68,13 @@ seconds. In the logs you should find the joiner connecting, both building
 match 1, scores that agree on both sides at the same match time, blasts in both
 directions, the joiner asking for a new match, and – because the joiner is
 stopped first – `host: the joiner left`.
+
+Every second each side also logs the animals – how often each has farted and
+where its fart hangs (`grep "animals=" Logs/net-host.log Logs/net-client.log`).
+What the joiner's line says about each animal must equal what the host's line
+just before or just after it says. The one exception: a fart that was dropped
+and taken between two of the host's lines may show as `there` on the joiner's
+side only.
 
 ```sh
 Tools/dev/nettest.sh 24 44

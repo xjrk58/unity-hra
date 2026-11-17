@@ -168,6 +168,11 @@ public static class PlaytestRunner
             // (a bot may legitimately not have delivered yet when a short match ends, but it must have been collecting)
             if (k.c.Score + k.c.Backpack == 0 || k.longestStuck > 8f || k.falls > 0) ok = false;
         }
+        // the horses and unicorns: they must have been about, and farting
+        int animalFarts = 0;
+        foreach (var a in FartAnimal.All) animalFarts += a.FartSeq;
+        Debug.Log($"[Playtest] animals: {FartAnimal.All.Count}, farts so far: {animalFarts}");
+        if (FartAnimal.All.Count > 0 && t > 40f && animalFarts == 0) ok = false;
         Debug.Log($"[Playtest] match {(ok ? "ok" : "NOT ok")}, errorsLogged={errors}; reloading the scene like pressing R");
         firstOk = ok;
         phase = 1;

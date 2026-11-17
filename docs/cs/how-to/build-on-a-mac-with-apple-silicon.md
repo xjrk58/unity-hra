@@ -154,6 +154,7 @@ Macu a s `-buildTarget StandaloneOSX`:
 ```sh
 UNITY="/Applications/Unity/Hub/Editor/6000.4.11f1/Unity.app/Contents/MacOS/Unity -batchmode -projectPath . -buildTarget StandaloneOSX"
 $UNITY -executeMethod MonsterTestRunner.Run -logFile Logs/monster.log
+$UNITY -executeMethod AnimalTestRunner.Run -logFile Logs/animals.log
 ```
 
 Nástroje pro assety potřebují Python 3 s knihovnami Pillow, NumPy a SciPy

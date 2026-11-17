@@ -57,6 +57,7 @@ public class GameBootstrap : MonoBehaviour
                 BuildAI("Pšouk", red, bot1);
                 BuildAI("Bzdina", blue, bot2);
                 SpawnPickups(pickupCount);
+                SpawnHerd(puppets: false);
                 FartMonster.Build();
                 NetGame.BuildHost(joiner);
                 break;
@@ -68,6 +69,7 @@ public class GameBootstrap : MonoBehaviour
                 BuildPuppet("Pšouk", red, bot1, human: false);
                 BuildPuppet("Bzdina", blue, bot2, human: false);
                 PlacePickups(Session.Pickups);
+                SpawnHerd(puppets: true);
                 FartMonster.Build(puppet: true);
                 NetGame.BuildClient();
                 break;
@@ -77,6 +79,7 @@ public class GameBootstrap : MonoBehaviour
                 BuildAI("Pšouk", red, bot1);
                 BuildAI("Bzdina", blue, bot2);
                 SpawnPickups(pickupCount);
+                SpawnHerd(puppets: false);
                 FartMonster.Build();
                 break;
         }
@@ -217,7 +220,7 @@ public class GameBootstrap : MonoBehaviour
         foreach (var p in at) MakePickup(p, container.transform);
     }
 
-    static void MakePickup(Vector3 position, Transform container)
+    public static FartPickup MakePickup(Vector3 position, Transform container)
     {
         var s = new GameObject("FartPickup");
         s.transform.SetParent(container, true);
@@ -225,7 +228,22 @@ public class GameBootstrap : MonoBehaviour
         var col = s.AddComponent<SphereCollider>();
         col.isTrigger = true;
         col.radius = 1.1f;
-        s.AddComponent<FartPickup>();
+        return s.AddComponent<FartPickup>();
+    }
+
+    // Horses and unicorns: the same animals in the same order on every device, after the
+    // scattered farts (each animal brings one fart of its own).
+    void SpawnHerd(bool puppets)
+    {
+        FartAnimal.All.Clear();
+        if (!FartAnimal.Enabled) return;
+        var container = GameObject.Find("Pickups");
+        var pickups = container != null ? container.transform : new GameObject("Pickups").transform;
+        FartAnimal.Spawn(false, 0, new Color(0.36f, 0.20f, 0.09f), pickups, puppets);     // bay horse, ground deck
+        FartAnimal.Spawn(true, 1, new Color(0.93f, 0.93f, 0.97f), pickups, puppets);      // unicorn
+        FartAnimal.Spawn(false, 2, new Color(0.10f, 0.08f, 0.07f), pickups, puppets);     // black horse
+        FartAnimal.Spawn(true, 3, new Color(0.97f, 0.90f, 0.95f), pickups, puppets);      // unicorn on the roof
+        FartAnimal.Spawn(false, 3, new Color(0.72f, 0.55f, 0.28f), pickups, puppets);     // palomino on the roof
     }
 
     // Scatter pickups across every deck, avoiding holes, ramps, columns and the goal.

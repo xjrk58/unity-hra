@@ -26,6 +26,11 @@ them are farts. Walk into one with `W` `A` `S` `D`.
 The backpack counter goes up to 1 and one of its eight slots lights up. Collect
 a few more. Hold `Shift` while walking forward to sprint.
 
+A brown horse wanders about this deck. Now and then it stops, lifts its tail
+and leaves a fart of its own behind; take that one too. It steps aside when
+you come close. One deck up lives a unicorn: it farts a rainbow, and the
+rainbow-coloured fart at the rainbow's far end fills three slots at once.
+
 ## 3. Deliver them
 
 As soon as you carry something, an orange marker **CÍL** ("goal") with a

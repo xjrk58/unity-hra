@@ -16,7 +16,7 @@ The game's clock is put on fixed steps of a thirtieth of a second, as fast as
 the computer can compute them. A four-minute match takes well under a minute,
 and runs the same way every time.
 
-## Four kinds of check
+## Five kinds of check
 
 **A match with nobody in it.** `PlaytestRunner` lets the bots play and watches
 them: do they collect on every deck, climb the ramps, deliver, and never stand
@@ -35,6 +35,14 @@ buttons work and that a finger which started on a button never turns the view.
 arrive by itself and checks when and where it does. Then it uses a back door
 to put the monster wherever a check needs it – next to a player who stands
 still, on another deck, under the crosshair.
+
+**Two minutes in a paddock.** `AnimalTestRunner` lets the horses and unicorns
+wander while everybody else stands still, and follows each one: how far it
+walked, how often it farted, how close it came to a column, whether it ever
+stood over a hole, and whether everything it dropped lies on floor that can be
+reached. Then it stands an animal where a check needs it – tail towards a
+hole, tail towards the edge, in a corner with somebody walking up – and counts
+what a backpack gains from a horse's fart and from a rainbow.
 
 **Two programs talking.** For two-player, two copies of the built game run on
 one computer, one hosting and one joining, both playing by themselves and each

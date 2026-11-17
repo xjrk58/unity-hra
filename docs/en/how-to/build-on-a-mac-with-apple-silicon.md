@@ -150,6 +150,7 @@ The headless checks work the same as on Linux with the Mac editor path and
 ```sh
 UNITY="/Applications/Unity/Hub/Editor/6000.4.11f1/Unity.app/Contents/MacOS/Unity -batchmode -projectPath . -buildTarget StandaloneOSX"
 $UNITY -executeMethod MonsterTestRunner.Run -logFile Logs/monster.log
+$UNITY -executeMethod AnimalTestRunner.Run -logFile Logs/animals.log
 ```
 
 The asset tools need Python 3 with Pillow, NumPy and SciPy

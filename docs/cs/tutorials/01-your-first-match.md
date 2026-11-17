@@ -25,6 +25,11 @@ prdy. Vejdi do některého pomocí `W` `A` `S` `D`.
 Počitadlo batůžku stoupne na 1 a rozsvítí se jedno z jeho osmi políček. Seber
 jich ještě pár. Když při chůzi dopředu podržíš `Shift`, sprintuješ.
 
+Po tomhle patře se toulá hnědý kůň. Občas se zastaví, zvedne ocas a nechá za
+sebou vlastní prd; seber i ten. Když přijdeš blízko, uhne. O patro výš žije
+jednorožec: prdí duhu a duhový prd na jejím vzdáleném konci zaplní tři políčka
+najednou.
+
 ## 3. Odevzdej je
 
 Jakmile něco neseš, objeví se oranžová značka **CÍL** se vzdáleností; když je

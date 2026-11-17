@@ -62,6 +62,16 @@ public class NetBot : MonoBehaviour
             sb.Append($" | monster={(m != null ? m.State.ToString() : "none")} dread={(LightingRig.Instance != null ? LightingRig.Instance.Dread : 0f):0.00}");
             sb.Append($" link={NetLink.Connected} states={(NetGame.Instance != null ? NetGame.Instance.States : 0)}");
             Debug.Log(sb.ToString());
+
+            // the horses and unicorns and what they left, to compare between the two devices
+            sb.Length = 0;
+            sb.Append($"[NetLog] {Session.Current} t={gm.MatchTime:0.0} farts={gm.Pickups.Count} animals={FartAnimal.All.Count} |");
+            foreach (var a in FartAnimal.All)
+            {
+                Vector3 h = a.pickup.Home;
+                sb.Append($" {(a.unicorn ? "U" : "H")}{a.deck} n={a.FartSeq} {(a.pickup.Available ? "there" : "gone")}@{h.x:0.0},{h.y:0.0},{h.z:0.0}");
+            }
+            Debug.Log(sb.ToString());
         }
 
         if (gm.Paused) return;

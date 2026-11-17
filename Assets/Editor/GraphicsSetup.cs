@@ -91,6 +91,12 @@ public static class GraphicsSetup
                 UniversalRenderPipelineAsset.packagePath + "/Runtime/Data/PostProcessData.asset");
         }
         renderer.renderingMode = RenderingMode.ForwardPlus;
+        // The gas (wisps, beams of light, bursts, the monster's smoke, rainbows) is drawn
+        // with soft particles, which read the depth of the scene - so that depth has to be
+        // copied before the transparent things are drawn, not after (URP's default). The
+        // desktop tier got away with the default because its ambient occlusion makes a
+        // depth pre-pass anyway; on the two phone tiers the gas was simply not drawn.
+        renderer.copyDepthMode = CopyDepthMode.AfterOpaques;
         if (desktop) EnsureSsao(renderer);
         EditorUtility.SetDirty(renderer);
 
@@ -334,6 +340,13 @@ public static class GraphicsSetup
         Plain("MonsterClaw", new Color(0.13f, 0.11f, 0.08f), metallic: 0f, smoothness: 0.62f);
         Emissive("MonsterEye", new Color(1f, 0.09f, 0f), 18f);
         Emissive("MonsterMaw", new Color(0.30f, 1f, 0.05f), 3f);
+
+        // --- horses and unicorns (Tools/blender/build_horse.py); coats are tinted per animal at run time
+        Plain("HorseBody", new Color(0.36f, 0.20f, 0.09f), metallic: 0f, smoothness: 0.38f);
+        Plain("HorseMane", new Color(0.05f, 0.03f, 0.02f), metallic: 0f, smoothness: 0.3f);
+        Plain("HorseHoof", new Color(0.07f, 0.06f, 0.05f), metallic: 0f, smoothness: 0.5f);
+        Plain("HorseEye", new Color(0.02f, 0.02f, 0.025f), metallic: 0f, smoothness: 0.92f);
+        Emissive("HorseHorn", new Color(1f, 0.80f, 0.22f), 2.2f);
 
         // --- emissive
         Emissive("LampGlow", new Color(1f, 0.96f, 0.88f), 9f);

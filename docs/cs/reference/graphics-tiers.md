@@ -24,6 +24,14 @@ Společné pro všechny: lineární barevný prostor, jedno směrové slunce zar
 se sluncem na obrázku oblohy, tříbarevné okolní světlo, jedna reflexní sonda
 s box projekcí na každé patro zachycená jednou na začátku, měkké částice.
 
+Plyn – vír a paprsek světla u prdu, výbuchy, kouř příšery, duhy – se kreslí
+měkkými částicemi, které čtou hloubku scény. Všechny tři renderery proto tu
+hloubku kopírují hned po vykreslení pevných věcí
+(`copyDepthMode = AfterOpaques`). S výchozím nastavením Unity, až po
+průhledných věcech, nekreslily obě úrovně pro telefony plyn vůbec; úroveň pro
+počítače tomu unikla jen proto, že její ambient occlusion si dělá vlastní
+průchod hloubky.
+
 Proč úroveň pro staré telefony rozsvěcí lampy jen v jednom patře: na
 grafických čipech omezených na OpenGL ES 3.0 zvládne pipeline kromě slunce
 16 světel a parkovací dům má až 27 lamp.

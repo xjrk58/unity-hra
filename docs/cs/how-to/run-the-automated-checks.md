@@ -26,10 +26,11 @@ grep -c "error CS" Logs/that-run.log      # must print 0
 
 | Co | Příkaz | Prošlo, když je v logu |
 |----|--------|------------------------|
-| Zápas botů: boti sbírají, používají rampy, odevzdávají, nikdy se nezaseknou; potom restart | `$UNITY -executeMethod PlaytestRunner.Run -playtestSeconds 240 -logFile Logs/playtest.log` | `[Playtest] PASS` |
-| Totéž s prdy jen v horních patrech | přidej `-playtestMinFloor 2` | `[Playtest] PASS` |
+| Zápas botů: boti sbírají, používají rampy, odevzdávají, nikdy se nezaseknou; zvířata prdí; potom restart | `$UNITY -executeMethod PlaytestRunner.Run -playtestSeconds 240 -logFile Logs/playtest.log` | `[Playtest] PASS` |
+| Totéž s prdy jen v horních patrech, nebo jen v nejvyšším | přidej `-playtestMinFloor 2`, nebo `3` | `[Playtest] PASS` |
 | Dotykové ovládání řízené naskriptovanými prsty | `$UNITY -executeMethod TouchTestRunner.Run -touchHud -logFile Logs/touch.log` | `[TouchTest] PASS (16 checks)` |
 | Příšera: kdy přijde, lov, chycení, zahnání, restart | `$UNITY -executeMethod MonsterTestRunner.Run -logFile Logs/monster.log` | `[MonsterTest] PASS (22 checks)` |
+| Koně a jednorožci: kudy chodí, kam dopadají jejich prdy a jakou mají hodnotu, uhýbání, restart | `$UNITY -executeMethod AnimalTestRunner.Run -logFile Logs/animals.log` | `[AnimalTest] PASS (26 checks)` |
 
 K těmhle příkazům **nepřidávej** `-quit`: samy vstoupí do režimu Play a samy
 skončí. Každý trvá jednu až dvě minuty; návratový kód je 0 jen při úspěchu.
@@ -42,9 +43,10 @@ $UNITY -executeMethod ShotRunner.Run -shotDir Shots/mobile  -touchHud -mobileQua
 $UNITY -executeMethod ShotRunner.Run -shotDir Shots/lite    -touchHud -liteQuality   -logFile Logs/shots-lite.log
 ```
 
-Každý zapíše asi dva tucty souborů PNG: pohled hráče, HUD, arénu z několika
+Každý zapíše skoro třicet souborů PNG: pohled hráče, HUD, arénu z několika
 úhlů, prdy, příšeru zdálky, zblízka a přímo před obličejem
-(`20_`–`25_`) a konečné pořadí (`13_ranking`). Druhý a třetí příkaz ukazují,
+(`20_`–`25_`), koně a jednorožce uprostřed duhového prdu (`30_`–`33_`)
+a konečné pořadí (`13_ranking`). Druhý a třetí příkaz ukazují,
 co vykresluje telefon a starý telefon
 ([Grafické úrovně](../reference/graphics-tiers.md)). V logu je i hrubý čas
 snímku: `ShotRunner benchmark: … ms per 1080p frame`.
@@ -66,6 +68,13 @@ spustí hostitele a připojeného hráče, který hraje sám, oba bez okna, na 8
 staví zápas 1, skóre, které se ve stejném čase zápasu na obou stranách
 shoduje, prdnutí oběma směry, žádost připojeného hráče o nový zápas a
 – protože se připojený hráč zastaví první – `host: the joiner left`.
+
+Každou sekundu navíc obě strany zalogují zvířata – kolikrát které prdlo a kde
+visí jeho prd (`grep "animals=" Logs/net-host.log Logs/net-client.log`). Co
+řádek připojeného hráče říká o každém zvířeti, se musí shodovat s tím, co říká
+řádek hostitele těsně před ním nebo těsně po něm. Jediná výjimka: prd, který
+zvíře pustilo a někdo sebral mezi dvěma řádky hostitele, může být jako `there`
+vidět jen na straně připojeného hráče.
 
 ```sh
 Tools/dev/nettest.sh 24 44

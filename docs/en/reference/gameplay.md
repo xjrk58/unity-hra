@@ -10,7 +10,7 @@ All values are the defaults in the source; where to change them is listed in
 | Competitors, solo | the player (**Ty**, green) and two bots: **Pšouk** (red), **Bzdina** (blue) |
 | Competitors, two players | host player (green), joined player (yellow), both bots |
 | Goal of the match | be the first to expel **15** farts at the goal |
-| Farts in the arena | 20, scattered over all decks; a taken one is back in the same place after 4 s |
+| Farts in the arena | 20, scattered over all decks; a taken one is back in the same place after 4 s. Up to 5 more come from the [horses and unicorns](#horses-and-unicorns) |
 | Backpack | holds 8 |
 | Ranking | by delivered farts; ties by farts carried, then by roster order |
 | First monster | 45 s after the match starts (lights fail from 38 s) |
@@ -42,6 +42,31 @@ be blasted or caught again until they are back.
 Bots take the nearest fart (another deck counts as 26 m further), go to the
 goal when the backpack is full – or holds at least 6 and the next fart is far
 – and use the ramps. They do not avoid the monster.
+
+## Horses and unicorns
+
+Three horses and two unicorns live in the car park: a bay horse on the ground
+deck, a white unicorn on the first, a black horse on the second, and a unicorn
+and a palomino on the top deck. Each wanders about its own deck, grazes, and
+every so often stops, lifts its tail and farts.
+
+| | Horse | Unicorn |
+|---|---|---|
+| Walks at | 2.6 m/s | 3.2 m/s |
+| Farts | every 7–12 s of walking (the first time after 4–9 s) | the same |
+| What it leaves | a green fart, 1.6 m behind it | a rainbow, and a **rainbow fart** where the rainbow comes down, about 4 m behind it |
+| Worth in the backpack | 1 | **3**, or as many as still fit |
+| Sound | long and low | short and squeaky, with bells |
+
+Each animal has one fart at a time. It lies where the animal last farted until
+somebody takes it; it does not come back by itself, and it moves when the
+animal farts again. A fart let go with no free floor behind the animal – over
+a hole, a ramp or a column – leaves nothing new to collect.
+
+The animals are not obstacles and cannot be blasted or caught. They are shy:
+when a player or a bot comes within 2.6 m they hurry out of the way at 7 m/s,
+and they do not stop to fart with somebody that close. Nobody starts a match
+next to one. Bots take their farts like any others; the monster ignores them.
 
 ## The monster
 

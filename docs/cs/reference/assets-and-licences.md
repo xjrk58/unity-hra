@@ -3,7 +3,7 @@
 ## Projekt
 
 Kód hry, skripty v `Tools/`, modely vygenerované těmi skripty (postava,
-příšera, zábradlí, sloup, lampa, cíl), ikona aplikace, syntetizované zvuky a
+příšera, kůň, zábradlí, sloup, lampa, cíl), ikona aplikace, syntetizované zvuky a
 tahle dokumentace jsou vydané pod **licencí MIT** – viz
 [`LICENSE`](../../../LICENSE).
 

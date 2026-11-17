@@ -16,7 +16,7 @@ Hodiny hry se přepnou na pevné kroky po třicetině sekundy, tak rychle, jak j
 počítač stihne počítat. Čtyřminutový zápas trvá výrazně míň než minutu a
 pokaždé proběhne stejně.
 
-## Čtyři druhy kontrol
+## Pět druhů kontrol
 
 **Zápas, ve kterém nikdo není.** `PlaytestRunner` nechá hrát boty a sleduje
 je: sbírají v každém patře, stoupají po rampách, odevzdávají a nikdy dlouho
@@ -35,6 +35,13 @@ tlačítku, pohled nikdy neotočí.
 sama, a zkontroluje, kdy a kde se to stane. Potom zadními vrátky umístí
 příšeru tam, kde ji kontrola potřebuje – vedle hráče, který stojí na místě, do
 jiného patra, pod zaměřovač.
+
+**Dvě minuty ve výběhu.** `AnimalTestRunner` nechá koně a jednorožce toulat se,
+zatímco všichni ostatní stojí, a každého sleduje: kolik ušel, kolikrát prdnul,
+jak blízko se dostal ke sloupu, jestli někdy stál nad otvorem a jestli všechno,
+co po sobě nechal, leží na podlaze, kam se dá dojít. Potom postaví zvíře tam,
+kde ho kontrola potřebuje – ocasem k otvoru, ocasem k okraji, do rohu, ke
+kterému někdo přichází – a spočítá, kolik batůžku přidá prd koně a kolik duha.
 
 **Dva programy, které si povídají.** Pro hru ve dvou běží na jednom počítači
 dvě kopie sestavené hry, jedna hostuje a druhá se připojuje, obě hrají samy a

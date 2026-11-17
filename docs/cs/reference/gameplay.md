@@ -10,7 +10,7 @@ uvádí návod [Změna pravidel](../how-to/change-the-rules.md).
 | Závodníci, sólo | hráč (**Ty**, zelená) a dva boti: **Pšouk** (červená), **Bzdina** (modrá) |
 | Závodníci, hra ve dvou | hráč hostitele (zelená), připojený hráč (žlutá), oba boti |
 | O co v zápase jde | jako první vyprdnout v cíli **15** prdů |
-| Prdy v aréně | 20, rozmístěných po všech patrech; sebraný prd je po 4 s zpátky na stejném místě |
+| Prdy v aréně | 20, rozmístěných po všech patrech; sebraný prd je po 4 s zpátky na stejném místě. Až 5 dalších přidají [koně a jednorožci](#koně-a-jednorožci) |
 | Batůžek | pojme 8 |
 | Pořadí | podle odevzdaných prdů; při shodě podle nesených prdů, pak podle pořadí v soupisce |
 | První příšera | 45 s po začátku zápasu (světla vypadávají od 38 s) |
@@ -43,6 +43,31 @@ něm znovu prdnout ani ho znovu chytit.
 Boti berou nejbližší prd (jiné patro se počítá jako o 26 m dál), jdou do cíle,
 když je batůžek plný – nebo v něm je aspoň 6 prdů a další prd je daleko – a
 používají rampy. Příšeře se nevyhýbají.
+
+## Koně a jednorožci
+
+V parkovacím domě žijí tři koně a dva jednorožci: hnědák v přízemí, bílý
+jednorožec v prvním patře, vraník ve druhém a jednorožec s plavákem v nejvyšším
+patře. Každý se toulá po svém patře, pase se a čas od času se zastaví, zvedne
+ocas a prdne.
+
+| | Kůň | Jednorožec |
+|---|---|---|
+| Chodí rychlostí | 2,6 m/s | 3,2 m/s |
+| Prdí | po každých 7–12 s chůze (poprvé po 4–9 s) | stejně |
+| Co po něm zůstane | zelený prd 1,6 m za ním | duha a **duhový prd** tam, kde duha dopadne, asi 4 m za ním |
+| Hodnota v batůžku | 1 | **3**, nebo kolik se jich ještě vejde |
+| Zvuk | dlouhý a hluboký | krátký a pisklavý, se zvonky |
+
+Každé zvíře má v jednu chvíli jeden prd. Leží tam, kde zvíře naposledy prdlo,
+dokud ho někdo nesebere; sám se nevrací a přesune se, až zvíře prdne znovu.
+Prd vypuštěný tam, kde za zvířetem není volná podlaha – nad otvorem, rampou
+nebo u sloupu –, po sobě nenechá nic nového k sebrání.
+
+Zvířata nejsou překážky a nejde po nich prdnout ani je chytit. Jsou plachá:
+když se hráč nebo bot přiblíží na 2,6 m, uhnou mu rychlostí 7 m/s, a dokud je
+někdo tak blízko, neprdí. Nikdo nezačíná zápas hned vedle zvířete. Boti berou
+jejich prdy jako každé jiné; příšera si jich nevšímá.
 
 ## Příšera
 

@@ -35,7 +35,7 @@ IEEE 754. Zprávy pro jiný zápas než aktuální (`match id`) se ignorují.
 
 | Typ | Název | Od | Obsah |
 |-----|-------|----|-------|
-| 2 | Start | hostitel | `u8` id zápasu, `u8` počet prdů, pak pro každý `f32 x, y, z` |
+| 2 | Start | hostitel | `u8` id zápasu, `u8` počet rozmístěných prdů, pak pro každý `f32 x, y, z` |
 | 3 | Ready | připojené zařízení | `u8` id zápasu |
 | 5 | State | hostitel, 20krát za sekundu | viz níže |
 | 6 | Input | připojené zařízení, 20krát za sekundu | `u8` id zápasu, `f32 x, y, z` jeho hráče, `f32` yaw ve stupních |
@@ -66,10 +66,22 @@ u8   1 if a monster follows, then:
        i8  prey's roster index or -1;  i8 last victim's index or -1
        u8  number of appearances;  u8 counter of times it was blasted away
        f32 speed
+u8   number of animals, then for each:
+       f32 x, y, z;  f32 yaw
+       u8  fart counter (a change means: it has just farted)
+       u8  speed in units of 0.05 m/s;  u8 1 = grazing
+       f32 x, y, z of the place where its fart hangs
 ```
 
 Pořadí v soupisce je na obou zařízeních stejné: hráč hostitele, hráč
 připojeného zařízení, Pšouk, Bzdina.
+
+Prdy se na obou zařízeních číslují stejně: nejdřív rozmístěné v pořadí ze
+zprávy **Start**, pak jeden za každé zvíře. Zvířata ani jejich prdy ve zprávě
+**Start** nejsou; obě zařízení vytvoří stejné stádo ve stejném pořadí (kůň,
+jednorožec, kůň, jednorožec, kůň) a připojené zařízení je umisťuje podle zprávy
+**State**. Jestli je prd zvířete k sebrání, říká jeho bit v `u32` jako u
+každého jiného prdu; zápas má 25 prdů a pole má místo pro 32.
 
 ## Průběh
 

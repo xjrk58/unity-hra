@@ -44,8 +44,9 @@ python3 Tools/assets/make_icon.py Assets/Icon.png
 
 ## Models
 
-The Blender scripts in `Tools/blender/` build the original models (character, fart monster, railing,
-column, lamp, goal) from nothing: `blender -b -P Tools/blender/build_character.py` / `build_kit.py` /
-`build_monster.py` (add `-- --preview DIR` to the last one for renders of the monster).
+The Blender scripts in `Tools/blender/` build the original models (character, fart monster, horse,
+railing, column, lamp, goal) from nothing: `blender -b -P Tools/blender/build_character.py` /
+`build_kit.py` / `build_monster.py` / `build_horse.py` (add `-- --preview DIR` to the last two for
+renders of the monster, or of the horse and the unicorn).
 
 After changing assets, run **Tools ▸ Prdivý závod ▸ Rebuild graphics settings and materials** in Unity.

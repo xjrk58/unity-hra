@@ -21,6 +21,14 @@ public class FartPickup : MonoBehaviour
     /// <summary>Where it hovers (it bobs around this point).</summary>
     public Vector3 Home => home;
 
+    /// <summary>How many farts it puts into a backpack (a rainbow fart is worth three).</summary>
+    public int worth = 1;
+
+    /// <summary>True for the fart a horse or unicorn leaves (it is not one of the scattered ones).</summary>
+    public bool IsAnimalDrop => animalDrop;
+
+    bool animalDrop, rainbow;
+
     ParticleSystem wisp;
     Transform core;
     LineRenderer beam;
@@ -118,9 +126,9 @@ public class FartPickup : MonoBehaviour
     {
         if (DisplayOnly || !Available) return false;
         if (c == null || c.BackpackFull || c.Stunned || c.Gone) return false;
-        if (!c.Collect(1)) return false;
-        Consume(c.Tint);
-        Invoke(nameof(Respawn), respawnDelay);
+        if (!c.Collect(worth)) return false;
+        Consume(rainbow ? Color.white : c.Tint);
+        if (!animalDrop) Invoke(nameof(Respawn), respawnDelay);     // an animal's fart comes back when the animal farts again
         return true;
     }
 
@@ -134,6 +142,54 @@ public class FartPickup : MonoBehaviour
             wisp.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
             GasFx.Burst(transform.position, tint, 0.6f);
         }
+    }
+
+    /// <summary>
+    /// Turns this into the fart an animal leaves behind: not there until the
+    /// animal farts, never back by itself, and - from a unicorn - a rainbow
+    /// worth three.
+    /// </summary>
+    public void MakeAnimalDrop(bool fromUnicorn)
+    {
+        animalDrop = true;
+        rainbow = fromUnicorn;
+        worth = fromUnicorn ? 3 : 1;
+        if (rainbow)
+        {
+            // every lobe its own colour, a rainbow column of light, rainbow wisps
+            var block = new MaterialPropertyBlock();
+            int i = 0;
+            foreach (var r in core.GetComponentsInChildren<MeshRenderer>())
+            {
+                Color c = GasFx.RainbowColor(i++);
+                block.SetColor("_BaseColor", c);
+                block.SetColor("_EmissionColor", c.linear * 2.6f);
+                r.SetPropertyBlock(block);
+            }
+            beam.colorGradient = GasFx.RainbowGradient(0.55f);
+            if (wisp != null) Destroy(wisp.gameObject);
+            wisp = GasFx.Wisp(transform, true);
+        }
+        Available = false;
+        col.enabled = false;
+        ShowSolid(false);
+        if (wisp != null) wisp.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+    }
+
+    /// <summary>The animal has farted: its fart now hangs here.</summary>
+    public void Drop(Vector3 at)
+    {
+        home = at;
+        transform.position = at;
+        if (!Available) Respawn();
+    }
+
+    /// <summary>Joining device: where the host's animal left it.</summary>
+    public void NetMove(Vector3 at)
+    {
+        if (at == home) return;
+        home = at;
+        transform.position = at;
     }
 
     /// <summary>Joining device: the host says whether this one is there to be taken.</summary>

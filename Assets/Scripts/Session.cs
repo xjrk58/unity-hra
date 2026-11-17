@@ -89,12 +89,17 @@ public static class Session
 
     // ------------------------------------------------------------------ the "start" message
 
+    // Only the scattered farts are listed: the one each horse and unicorn brings is made
+    // with the animal on both devices, after these (see GameBootstrap.SpawnHerd).
     public static void WriteStart(BinaryWriter w, IReadOnlyList<FartPickup> pickups)
     {
+        int scattered = 0;
+        foreach (var p in pickups) if (!p.IsAnimalDrop) scattered++;
         w.Write(MatchId);
-        w.Write((byte)pickups.Count);
+        w.Write((byte)scattered);
         foreach (var p in pickups)
         {
+            if (p.IsAnimalDrop) continue;
             Vector3 at = p.Home;
             w.Write(at.x); w.Write(at.y); w.Write(at.z);
         }

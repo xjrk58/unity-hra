@@ -30,6 +30,7 @@ public static class TouchTestRunner
     {
         if (!SessionState.GetBool(ActiveKey, false)) return;
         FartMonster.Enabled = false;        // this test is about the controls
+        FartAnimal.Enabled = false;         // (and a fart dropped at the player's feet would spoil the sums)
         Application.logMessageReceived += (msg, stack, type) =>
         {
             if (type == LogType.Exception || type == LogType.Error || type == LogType.Assert) errors++;

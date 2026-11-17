@@ -34,7 +34,7 @@ match than the current one (`match id`) are ignored.
 
 | Type | Name | From | Payload |
 |------|------|------|---------|
-| 2 | Start | host | `u8` match id, `u8` number of farts, then for each `f32 x, y, z` |
+| 2 | Start | host | `u8` match id, `u8` number of scattered farts, then for each `f32 x, y, z` |
 | 3 | Ready | joiner | `u8` match id |
 | 5 | State | host, 20 times a second | see below |
 | 6 | Input | joiner, 20 times a second | `u8` match id, `f32 x, y, z` of its player, `f32` yaw in degrees |
@@ -65,10 +65,23 @@ u8   1 if a monster follows, then:
        i8  prey's roster index or -1;  i8 last victim's index or -1
        u8  number of appearances;  u8 counter of times it was blasted away
        f32 speed
+u8   number of animals, then for each:
+       f32 x, y, z;  f32 yaw
+       u8  fart counter (a change means: it has just farted)
+       u8  speed in units of 0.05 m/s;  u8 1 = grazing
+       f32 x, y, z of the place where its fart hangs
 ```
 
 The roster order is the same on both devices: host's player, joiner's player,
 Pšouk, Bzdina.
+
+Farts are numbered the same way on both devices: first the scattered ones in
+the order of **Start**, then one for each animal. The animals and their farts
+are not in **Start**; both devices create the same herd in the same order
+(horse, unicorn, horse, unicorn, horse), and the joiner places them from
+**State**. Whether an animal's fart is there to be taken is its bit in the
+`u32`, like any other fart's; a match has 25 farts, and the field has room for
+32.
 
 ## Sequence
 

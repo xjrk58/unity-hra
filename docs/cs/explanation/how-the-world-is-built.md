@@ -30,7 +30,7 @@ přenášet jen to, co se hýbe.
 Desky, rampy, obrubníky a trámy jsou kvádry z `MeshFactory` s texturovými
 souřadnicemi ve skutečných metrech, takže betonová textura má stejné měřítko
 na 26m patře i na 30cm obrubníku. Věci, které mají tvar – díl zábradlí, sloup,
-lampa, cíl, závodníci, příšera – jsou modely FBX, samy vygenerované skripty
+lampa, cíl, závodníci, příšera, koně – jsou modely FBX, samy vygenerované skripty
 pro Blender, a rozmisťují se podle mřížky.
 
 Kód hledá části modelu podle jména („GoalFan“, „MonsterJaw“) a každý slot

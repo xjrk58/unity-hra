@@ -24,6 +24,13 @@ Common to all: linear colour space, one directional sun aligned with the sun
 in the sky picture, three-colour ambient light, one box-projected reflection
 probe per deck captured once at the start, soft particles.
 
+The gas – a fart's swirl and beam of light, bursts, the monster's smoke,
+rainbows – is drawn with soft particles, which read the depth of the scene.
+All three renderers therefore copy that depth right after the solid things are
+drawn (`copyDepthMode = AfterOpaques`). With Unity's default, after the
+transparent things, the two phone tiers drew no gas at all; the desktop tier
+only escaped because its ambient occlusion makes a depth pass of its own.
+
 Why the old-phone tier lights only one deck's lamps: on graphics chips limited
 to OpenGL ES 3.0 the pipeline handles 16 lights besides the sun, and the car
 park has up to 27 lamps.

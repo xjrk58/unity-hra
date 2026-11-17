@@ -6,7 +6,7 @@ was built this way rather than another.
 ## One device decides
 
 The device that set the game up – the host – runs the whole world exactly as
-in a solo game: bots, farts, the monster, scores, who has won. Twenty times a
+in a solo game: bots, farts, animals, the monster, scores, who has won. Twenty times a
 second it sends the other device a complete description of that world. The
 joining device runs none of that. It shows what it is told.
 
@@ -45,7 +45,8 @@ The host does not send "play a fart sound here". The joining device compares
 each description with the last one: a score went up, so somebody expelled –
 puff and sound at that competitor; a blast counter changed, so draw the jet
 from them to their victim; the monster's phase changed to *feeding* with this
-device's player as victim, so start the scare.
+device's player as victim, so start the scare; a unicorn's fart counter went
+up, so lift its tail and draw the rainbow.
 
 Fewer kinds of message means fewer ways for the two sides to fall out of step,
 and a lost or late message cannot leave an effect half-played: the next
@@ -62,6 +63,17 @@ only runs while it is not frozen.
 
 Every match has a number. A message from the previous match that arrives
 after a restart is recognised and dropped.
+
+## A fixed set of farts
+
+The two devices talk about farts by number, so both must have the same farts
+in the same order for the whole match. That is easy for the scattered ones:
+the host lists them at the start. A horse's fart is different – it appears
+wherever the horse happens to be. Creating a new fart for each one would mean
+a list that grows on one device a moment before it grows on the other. So
+each animal owns exactly one fart from the first frame, hidden until the
+animal farts, and the host only says where it hangs now. The list never
+changes; only positions do.
 
 ## Finding each other
 

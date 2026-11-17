@@ -28,15 +28,18 @@ Potřebuješ Blender 4.
 blender -b --factory-startup -P Tools/blender/build_character.py     # the competitors
 blender -b --factory-startup -P Tools/blender/build_kit.py           # railing, column, lamp, goal
 blender -b --factory-startup -P Tools/blender/build_monster.py -- --preview Shots/monster
+blender -b --factory-startup -P Tools/blender/build_horse.py -- --preview Shots/horse     # horses and unicorns: one model
 ```
 
 Každý zapíše soubory `.fbx` do `Assets/Resources/Models`. `--preview DIR`
-navíc vykreslí obrázky příšery. Hra hledá části modelu podle názvů objektů a
-slotů materiálů, takže je při úpravě skriptu zachovej.
+navíc vykreslí obrázky příšery, nebo koně a jednorožce. Hra hledá části modelu
+podle názvů objektů a slotů materiálů, takže je při úpravě skriptu zachovej.
+Kůň a jednorožec jsou jeden model: hra ukáže roh jen jednorožcům a každému
+zvířeti dá vlastní barvu srsti.
 
 Jedna past: exportér umístí správně jen **přímé potomky kořenového objektu**.
 Část vnořená hlouběji přijde o svou pozici; v souboru ji zavěs na kořen a
-v kódu hry jí změň rodiče (takhle to dělá čelist příšery).
+v kódu hry jí změň rodiče (takhle to dělá čelist příšery a roh jednorožce).
 
 ## Textury, obloha a rekvizity (Poly Haven, CC0)
 

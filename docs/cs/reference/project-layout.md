@@ -10,7 +10,7 @@ manager. Žádné další balíčky a žádný obsah z Asset Store.
 | `Assets/Scenes/Main.unity` | jediná scéna: jeden objekt, `Bootstrap` |
 | `Assets/Scripts/` | hra |
 | `Assets/Editor/` | sestavovací skript, nastavení grafiky, runnery bez okna |
-| `Assets/Resources/Models` | modely FBX: postava, příšera, zábradlí, sloup, lampa, cíl, naskenované rekvizity |
+| `Assets/Resources/Models` | modely FBX: postava, příšera, kůň, zábradlí, sloup, lampa, cíl, naskenované rekvizity |
 | `Assets/Resources/Textures`, `Sky` | sady PBR textur, sprite částic, HDRI obloha |
 | `Assets/Resources/Materials` | generuje je `GraphicsSetup`; za běhu se načítají podle jména |
 | `Assets/Resources/Audio/Farts` | 63 nahrávek prdů a uvedení jejich autora |
@@ -26,7 +26,7 @@ manager. Žádné další balíčky a žádný obsah z Asset Store.
 
 | Skript | Role |
 |--------|------|
-| `GameBootstrap` | vstupní bod: podle režimu relace postaví pozadí menu, nebo svět, cíl, závodníky, prdy a příšeru |
+| `GameBootstrap` | vstupní bod: podle režimu relace postaví pozadí menu, nebo svět, cíl, závodníky, prdy, zvířata a příšeru |
 | `Session` | co tenhle běh hraje (menu / sólo / hostitel / připojený), drží se přes načítání scén; čte příkazovou řádku |
 | `MainMenu` | úvodní obrazovka: sólo, hostování, připojení ze seznamu nebo kódem; `MenuOrbit` pohybuje její kamerou |
 | `Arena` | rozměry arény, sdílené stavbou, kolizemi a navigací |
@@ -41,13 +41,14 @@ manager. Žádné další balíčky a žádný obsah z Asset Store.
 | `AICompetitor` | boti: sbírají, odevzdávají, prdnou po soupeři, používají rampy |
 | `NavPlanner` | plánování cesty v jednom patře (graf viditelnosti kolem překážek) |
 | `CharacterVisual` | model postavy, procedurální animace běhu, nádrž na plyn |
-| `FartPickup` | prd, který se dá sebrat |
+| `FartPickup` | prd, který se dá sebrat: rozmístěný, nebo ten, který po sobě nechá zvíře |
 | `GoalZone` | trigger cíle |
-| `GasFx` | částicové efekty |
+| `GasFx` | částicové efekty; `RainbowArc` kreslí duhu jednorožce |
 | `FartAudio` | zvuky prdů: nahrávky, syntéza jako záloha |
 | `FartMonster` | chování příšery a šero, které přináší |
 | `MonsterVisual` | model příšery a procedurální animace |
 | `MonsterAudio` | zvuky příšery, všechny syntetizované |
+| `FartAnimal` | kůň nebo jednorožec: toulání, uhýbání, prdění a prd, který po něm zůstane; `AnimalVisual` je jeho model a procedurální animace |
 | `Hud` | HUD ve hře, grafika dotykového ovládání, hlášení, konečné pořadí |
 | `NetLink` | spojení mezi dvěma zařízeními: TCP s UDP majákem, nebo Bluetooth |
 | `BluetoothLink` | C# strana pomocné třídy pro Bluetooth (jen Android) |
@@ -67,6 +68,7 @@ manager. Žádné další balíčky a žádný obsah z Asset Store.
 | `PlaytestRunner` | zrychlený zápas botů |
 | `TouchTestRunner` | dotykové ovládání s naskriptovanými prsty |
 | `MonsterTestRunner` | chování příšery |
+| `AnimalTestRunner` | koně a jednorožci a jejich prdy |
 | `AudioDump` | exportuje syntetizované zvuky jako WAV |
 
 ## Konvence

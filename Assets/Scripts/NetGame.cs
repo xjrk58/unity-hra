@@ -208,6 +208,9 @@ public class NetGame : MonoBehaviour
         var m = FartMonster.Instance;
         w.Write(m != null);
         if (m != null) m.NetWrite(w);
+
+        w.Write((byte)FartAnimal.All.Count);
+        foreach (var a in FartAnimal.All) a.NetWrite(w);
     }
 
     // ------------------------------------------------------------------ joiner
@@ -286,8 +289,15 @@ public class NetGame : MonoBehaviour
         for (int i = 0; i < gm.Pickups.Count && i < 32; i++)
             if (gm.Pickups[i] != null) gm.Pickups[i].NetSetAvailable((mask & (1u << i)) != 0);
 
-        if (r.ReadBoolean() && FartMonster.Instance != null) FartMonster.Instance.NetRead(r);
+        if (r.ReadBoolean())
+        {
+            if (FartMonster.Instance != null) FartMonster.Instance.NetRead(r);
+            else return;        // (cannot happen between two copies of the same build)
+        }
         else if (FartMonster.Instance != null) FartMonster.Instance.NetGone();
+
+        int animals = r.ReadByte();
+        for (int i = 0; i < animals && i < FartAnimal.All.Count; i++) FartAnimal.All[i].NetRead(r);
 
         if ((flags & 2) != 0 && !gm.GameOver && winner >= 0 && winner < gm.Competitors.Count)
             gm.NetGameOver(gm.Competitors[winner]);

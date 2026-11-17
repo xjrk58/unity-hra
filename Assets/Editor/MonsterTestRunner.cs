@@ -30,6 +30,7 @@ public static class MonsterTestRunner
     static MonsterTestRunner()
     {
         if (!SessionState.GetBool(ActiveKey, false)) return;
+        FartAnimal.Enabled = false;         // (a fart dropped at the player's feet would spoil the sums)
         Application.logMessageReceived += (msg, stack, type) =>
         {
             if (type == LogType.Exception || type == LogType.Error || type == LogType.Assert) errors++;

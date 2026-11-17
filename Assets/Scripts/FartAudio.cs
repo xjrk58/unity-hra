@@ -296,6 +296,47 @@ public static class FartAudio
     public static void Pickup(Vector3 position, bool isPlayer) =>
         Play(pickupBag, position, isPlayer ? 0.32f : 0.2f, Random.Range(1.25f, 1.6f), isPlayer);
 
+    static AudioClip chime;
+
+    /// <summary>
+    /// A horse lets one go: long and low. A unicorn's is short and squeaky,
+    /// with a little run of bells on top.
+    /// </summary>
+    public static void Animal(Vector3 position, bool unicorn)
+    {
+        if (!unicorn)
+        {
+            Play(blastBag, position, 0.9f, Random.Range(0.58f, 0.74f), false);
+            return;
+        }
+        Play(expelBag, position, 0.7f, Random.Range(1.5f, 1.9f), false);
+        if (chime == null) chime = ToClip("UnicornChime", RenderChime());
+        Play(chime, position, 0.6f, Random.Range(0.96f, 1.06f), false);
+    }
+
+    /// <summary>Four rising bell notes (a C major chord, climbing).</summary>
+    public static float[] RenderChime()
+    {
+        float[] notes = { 1046.5f, 1318.5f, 1568f, 2093f };
+        int n = (int)(1.1f * SampleRate);
+        var buf = new float[n];
+        for (int k = 0; k < notes.Length; k++)
+        {
+            int start = (int)(k * 0.075f * SampleRate);
+            for (int i = start; i < n; i++)
+            {
+                float t = (i - start) / (float)SampleRate;
+                float env = Mathf.Min(1f, t / 0.004f) * Mathf.Exp(-t / 0.22f);
+                float w = 2f * Mathf.PI * notes[k] * t;
+                buf[i] += env * (Mathf.Sin(w) + 0.3f * Mathf.Sin(2f * w) + 0.12f * Mathf.Sin(3.01f * w)) * 0.3f;
+            }
+        }
+        float peak = 1e-6f;
+        foreach (float v in buf) peak = Mathf.Max(peak, Mathf.Abs(v));
+        for (int i = 0; i < n; i++) buf[i] *= 0.85f / peak;
+        return buf;
+    }
+
     /// <summary>A long triumphant one when somebody wins.</summary>
     public static void Fanfare() =>
         Play(fanfareBag, Vector3.zero, 1f, 1f, true);

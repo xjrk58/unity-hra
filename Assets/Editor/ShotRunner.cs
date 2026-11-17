@@ -187,6 +187,7 @@ public static class ShotRunner
         Vector3 sunView = new Vector3(8f, 1.7f, -4f);
         Shot(playerCam, dir, "09_sunward", sunView, LookAt(sunView, new Vector3(-6f, 2.3f, 3.5f)));
 
+        AnimalShots(playerCam, dir);
         MonsterShots(playerCam, dir);
 
         playerCam.transform.SetPositionAndRotation(home, homeRot);
@@ -210,6 +211,52 @@ public static class ShotRunner
             }
             Shot(playerCam, dir, "13_ranking", home, homeRot, GameInput.Touch ? 2340 : 1440, 1080);
             if (canvas != null) canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        }
+    }
+
+    // A horse; a unicorn in the middle of a rainbow fart, from the side and from behind; and
+    // the rainbow fart it leaves. Both are stood in the open bay between two rows of columns.
+    static void AnimalShots(Camera cam, string dir)
+    {
+        FartAnimal horse = null, unicorn = null;
+        foreach (var a in FartAnimal.All)
+        {
+            if (a.unicorn && unicorn == null) unicorn = a;
+            if (!a.unicorn && horse == null) horse = a;
+        }
+        if (horse != null)
+        {
+            horse.Place(new Vector3(-9f, 0f, 1.5f), 0f);
+            var visual = horse.GetComponent<AnimalVisual>();
+            if (visual != null) visual.Settle();
+            Transform t = horse.transform;
+            Vector3 p = t.position + t.forward * 2.8f + t.right * 3.2f + Vector3.up * 1.5f;
+            Shot(cam, dir, "30_horse", p, LookAt(p, t.position + Vector3.up * 1.0f));
+        }
+        if (unicorn != null)
+        {
+            float y = Arena.FloorY(unicorn.deck);
+            unicorn.Place(new Vector3(-9f, 0f, -3f), 180f);
+            unicorn.FartNow();
+            foreach (var arc in UnityEngine.Object.FindObjectsByType<RainbowArc>()) arc.Advance(0.9f);
+            foreach (var ps in UnityEngine.Object.FindObjectsByType<ParticleSystem>())
+                if (ps.name.StartsWith("Rainbow")) ps.Simulate(0.6f, true, true);
+            var visual = unicorn.GetComponent<AnimalVisual>();
+            if (visual != null) visual.Settle();
+
+            Vector3 p = new Vector3(-3.3f, y + 1.7f, -1.5f);
+            Shot(cam, dir, "31_unicorn_rainbow", p, LookAt(p, new Vector3(-9f, y + 1.45f, -1.5f)));
+
+            // the way a player usually meets it: from behind and a little to one side
+            p = new Vector3(-7.3f, y + 1.7f, 7.4f);
+            Shot(cam, dir, "33_rainbow_behind", p, LookAt(p, new Vector3(-9f, y + 1.3f, -1.5f)));
+
+            if (unicorn.pickup != null && unicorn.pickup.Available)
+            {
+                Vector3 at = unicorn.pickup.Home;
+                p = at + new Vector3(2.6f, 0.55f, 1.7f);
+                Shot(cam, dir, "32_rainbow_fart", p, LookAt(p, at + Vector3.up * 0.1f));
+            }
         }
     }
 

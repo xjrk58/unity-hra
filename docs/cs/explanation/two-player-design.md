@@ -6,7 +6,7 @@ proč je to postavené právě takhle, a ne jinak.
 ## Rozhoduje jedno zařízení
 
 Zařízení, které hru založilo – hostitel – řídí celý svět přesně jako v sólové
-hře: boty, prdy, příšeru, skóre i to, kdo vyhrál. Dvacetkrát za sekundu pošle
+hře: boty, prdy, zvířata, příšeru, skóre i to, kdo vyhrál. Dvacetkrát za sekundu pošle
 druhému zařízení úplný popis toho světa. Připojené zařízení nic z toho
 neřídí. Ukazuje, co se mu řekne.
 
@@ -44,7 +44,8 @@ Hostitel neposílá „tady přehraj zvuk prdu“. Připojené zařízení porov
 popis s předchozím: stouplo skóre, takže někdo vyprdnul – obláček a zvuk
 u toho závodníka; změnilo se počitadlo prdnutí, takže se nakreslí proud od něj
 k jeho oběti; fáze příšery se změnila na *krmení* a obětí je hráč tohohle
-zařízení, takže se spustí lekačka.
+zařízení, takže se spustí lekačka; jednorožci stouplo počitadlo prdů, takže
+zvedne ocas a nakreslí se duha.
 
 Míň druhů zpráv znamená míň způsobů, jak se obě strany můžou rozejít, a
 ztracená nebo opožděná zpráva nemůže nechat efekt napůl přehraný: další popis
@@ -61,6 +62,16 @@ tehdy, když není zmrazený.
 
 Každý zápas má číslo. Zpráva z předchozího zápasu, která dorazí po restartu,
 se pozná a zahodí.
+
+## Pevná sada prdů
+
+Obě zařízení mluví o prdech čísly, takže musí mít po celý zápas stejné prdy ve
+stejném pořadí. U rozmístěných je to snadné: hostitel je na začátku vyjmenuje.
+Prd koně je jiný – objeví se tam, kde kůň zrovna je. Kdyby pro každý vznikl
+nový prd, seznam by na jednom zařízení narostl o chvilku dřív než na druhém.
+Každé zvíře proto od prvního snímku vlastní právě jeden prd, schovaný, dokud
+zvíře neprdne, a hostitel jen říká, kde teď visí. Seznam se nikdy nemění;
+mění se jen polohy.
 
 ## Jak se zařízení najdou
 

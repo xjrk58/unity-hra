@@ -16,6 +16,11 @@ scripts. Change one, then run the [automated checks](run-the-automated-checks.md
 | When the monster first appears (45 s) | `FirstAppearance` | `Assets/Scripts/FartMonster.cs` |
 | Monster: speed, catch distance, knock-out, how long it hunts | constants at the top of the class | `Assets/Scripts/FartMonster.cs` |
 | No monster at all | set `FartMonster.Enabled = false` before the scene loads, or return early from `FartMonster.Build` | `Assets/Scripts/FartMonster.cs` |
+| Which animals live on which deck, and their coats | `SpawnHerd` | `Assets/Scripts/GameBootstrap.cs` |
+| Animals: walking speeds, time between farts, how shy they are | `Update`; `ShyDistance`, `ShySpeed` | `Assets/Scripts/FartAnimal.cs` |
+| Where an animal's fart lands (1.6 m behind a horse, 3 m beyond a unicorn's tail) | `HorseDrop`, `RainbowReach` | `Assets/Scripts/FartAnimal.cs` |
+| What a rainbow fart is worth (3) | `MakeAnimalDrop` | `Assets/Scripts/FartPickup.cs` |
+| No animals at all | set `FartAnimal.Enabled = false` before the scene loads | `Assets/Scripts/FartAnimal.cs` |
 | Size and shape of the arena | constants | `Assets/Scripts/Arena.cs` |
 | Names and colours of the competitors | `GameBootstrap.Awake` | `Assets/Scripts/GameBootstrap.cs` |
 
@@ -26,11 +31,13 @@ Things to keep in mind:
   changing it, and run the bot match with `-playtestMinFloor 2`.
 - **The monster's speed** sits between the bots (4.7), the player's walk (6)
   and sprint (8.6) on purpose; see [The monster](../explanation/the-monster.md).
-- **Match length.** Bots alone finish a match in roughly 45 to 80 seconds, so
+- **Match length.** Bots alone finish a match in roughly 45 to 100 seconds, so
   with the default target the monster often arrives near the end. A higher
   `WinTarget` gives it more of the match.
 - **Two players.** Both devices must run the same version of the game; the
   rules are not negotiated between them.
+- **How many farts.** The link between two devices describes at most 32 farts:
+  the scattered ones plus one for every animal (20 + 5 by default).
 - New on-screen texts are Czech, like the rest of the game.
 
 To try a different monster time without editing code, start the built game
