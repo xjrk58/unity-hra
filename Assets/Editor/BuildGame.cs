@@ -134,6 +134,28 @@ public static class BuildGame
 
         var s = report.summary;
         Debug.Log($"[Setup] build {s.result}: {s.totalSize / (1024 * 1024)} MB, {s.totalErrors} errors, {s.totalWarnings} warnings, {s.totalTime.TotalSeconds:0}s -> {s.outputPath}");
+        Report(s);
         return s.result == BuildResult.Succeeded;
+    }
+
+    // The build on GitHub (GameCI, .github/workflows/build.yml) decides whether a build
+    // worked by reading what it printed: it looks for this block and for the words
+    // "Build succeeded!", the way GameCI's own build script prints them. Without them it
+    // calls a finished build a failure.
+    static void Report(BuildSummary s)
+    {
+        Console.WriteLine(
+            "\n" +
+            "###########################\n" +
+            "#      Build results      #\n" +
+            "###########################\n" +
+            "\n" +
+            $"Duration: {s.totalTime}\n" +
+            $"Warnings: {s.totalWarnings}\n" +
+            $"Errors: {s.totalErrors}\n" +
+            $"Size: {s.totalSize} bytes\n");
+        Console.WriteLine(s.result == BuildResult.Succeeded
+            ? "Build succeeded!"
+            : $"Build {s.result.ToString().ToLowerInvariant()}!");
     }
 }
