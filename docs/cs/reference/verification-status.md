@@ -4,7 +4,7 @@ Co se doopravdy spustilo a kde. Přečti si to, než se spolehneš na sestavení
 pro platformu uvedenou v části „Nespuštěno“.
 
 Vývoj a testování probíhaly na jednom notebooku s Linuxem (integrovaná grafika
-AMD Radeon 780M). Naposledy aktualizováno, když přibyli koně a jednorožci.
+AMD Radeon 780M). Naposledy aktualizováno po prvních sestaveních na GitHubu.
 
 ## Ověřeno na vývojovém počítači
 
@@ -27,21 +27,34 @@ AMD Radeon 780M). Naposledy aktualizováno, když přibyli koně a jednorožci.
 | Standardní sestavení pro Android: menu, sólové zápasy, výraznější prdy, příšera | jeden současný špičkový telefon, Android 17 | nainstalováno a hráno; zápas se postaví za 0,02–0,14 s; příšera se objevila a hráče chytila (lekačka proběhla); v logu žádné chyby |
 | Dva hráči přes Wi-Fi | tento telefon jako hostitel, linuxový počítač připojený přes adresu s hráčem, který hraje sám | čtyři zápasy za sebou: obě zařízení postavila každý zápas, skóre i prdnutí seděly, o nový zápas požádal připojený hráč; žádné chyby na žádné straně |
 
-Obojí proběhlo se sestavením z doby před koňmi a jednorožci.
+| Standardní sestavení pro Android s koňmi a jednorožci | tentýž telefon | nainstalováno a hráno; občas se celý obraz změnil v červené, oranžové a žluté pruhy. Příčina nalezená na počítači (pásy duhy procházející těsně kolem kamery) je tam opravená; opravené sestavení na telefonu ještě nebylo |
+
+První dvě věci proběhly se sestavením z doby před koňmi a jednorožci.
+
+## Sestaveno na GitHubu
+
+Workflow v `.github/workflows/build.yml` je sestavilo na strojích GitHubu; viz
+[Sestavení v GitHub Actions](../how-to/build-in-github-actions.md).
+
+| Balíček | Co se s ním dělalo | Výsledek |
+|---------|--------------------|----------|
+| Linux | stažen a spuštěn na vývojovém počítači | ukazuje hru stejně jako místní sestavení |
+| Windows | rozbalen: program i jeho data tam jsou | sestaveno; nikdy nespuštěno |
+| macOS | rozbalen: aplikace pro Intel i Apple silicon, nepodepsaná vývojářským certifikátem a neověřená u Applu (bez notarizace) | sestaveno; nikdy nespuštěno |
+| APK pro Android (standardní a pro staré telefony) | název balíčku, oprávnění, typy procesorů a nejnižší verze Androidu porovnány s místními sestaveními: stejné | sestaveno; na telefon nenainstalováno |
 
 ## Nespuštěno
 
 | Oblast | Stav |
 |--------|------|
-| Koně a jednorožci na telefonu a v zápase mezi dvěma skutečnými zařízeními | jsou v obou APK; na zařízení se s nimi ještě nehrálo |
-| Plynové efekty na telefonu | oprava pro úrovně pro telefony (níže) byla vidět jen na obrázcích vykreslených na počítači; na obrazovku telefonu se od té doby nikdo nepodíval |
+| Koně a jednorožci v zápase mezi dvěma skutečnými zařízeními | nehráno |
+| Plynové efekty na telefonu | oprava pro úrovně pro telefony (níže) byla vidět jen na obrázcích vykreslených na počítači; na telefonu se od té doby hrálo, ale jestli je tam vidět vír a paprsek prdu, nikdo nenahlásil |
 | APK pro staré telefony na starém nebo 32bitovém zařízení | nikdy nespuštěno |
 | Hra přes Bluetooth | přeloží se a je zabalená; nikdy nespuštěna – potřebuje dvě spárovaná zařízení s Androidem |
 | Dva telefony proti sobě; telefon, který se ke hře *připojuje* (vyzkoušeno bylo jen hostování) | nikdy nespuštěno |
 | Nalezení hry v seznamu (oznámení přes UDP) mezi zařízeními | nikdy nepozorováno; firewall vývojového počítače blokuje příchozí provoz, takže se připojoval přes adresu |
-| Workflow pro GitHub Actions | napsané, nikdy nespuštěné: potřebuje licenci Unity v tajných údajích repozitáře |
-| Sestavení pro macOS | nikdy nesestaveno ani nespuštěno; návod vychází ze sestavovacího skriptu a obvyklého postupu Unity |
-| Sestavení pro Windows | nikdy nesestaveno ani nespuštěno |
+| Sestavení pro macOS | sestaveno na GitHubu (výše), nikdy nespuštěno; na Macu ho nikdo nesestavil – tamní návod vychází ze sestavovacího skriptu a obvyklého postupu Unity |
+| Sestavení pro Windows | sestaveno na GitHubu (výše), nikdy nespuštěno |
 | Snímková frekvence na jakémkoli telefonu | neměřena |
 | Systémové tlačítko Zpět na Androidu | nevyzkoušeno |
 | Odeslání hry na pozadí během zápasu pro dva | nevyzkoušeno |
