@@ -32,6 +32,12 @@ průhledných věcech, nekreslily obě úrovně pro telefony plyn vůbec; úrove
 počítače tomu unikla jen proto, že její ambient occlusion si dělá vlastní
 průchod hloubky.
 
+Dva efekty jsou pásky, které se vždycky natáčejí ke kameře: paprsek světla nad
+prdem a pruhy duhy. Pásek, který vede těsně kolem oka, by svou barvou zakryl
+celý pohled – kdo stál na konci duhy, viděl jen červené, oranžové a žluté
+pruhy. Pásky proto mají vlastní materiál `GasRibbon`, který od 1,75 m směrem
+ke kameře řídne a v 0,5 m zmizí.
+
 Proč úroveň pro staré telefony rozsvěcí lampy jen v jednom patře: na
 grafických čipech omezených na OpenGL ES 3.0 zvládne pipeline kromě slunce
 16 světel a parkovací dům má až 27 lamp.

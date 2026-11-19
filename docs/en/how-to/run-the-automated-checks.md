@@ -46,8 +46,9 @@ $UNITY -executeMethod ShotRunner.Run -shotDir Shots/lite    -touchHud -liteQuali
 
 Each writes nearly thirty PNG files: the player's view, the HUD, the arena
 from several angles, the farts, the monster far away, close and in your face
-(`20_`–`25_`), a horse and a unicorn in the middle of a rainbow fart
-(`30_`–`33_`), and the final ranking (`13_ranking`). The second and third
+(`20_`–`25_`), a horse, a unicorn in the middle of a rainbow fart and the
+view from the rainbow's end (`30_`–`34_`), and the final ranking
+(`13_ranking`). The second and third
 commands show what a phone and an old phone render
 ([Graphics tiers](../reference/graphics-tiers.md)). The log also carries a
 rough frame time: `ShotRunner benchmark: … ms per 1080p frame`.

@@ -88,7 +88,7 @@ public class FartPickup : MonoBehaviour
         beam.widthMultiplier = 0.55f;
         beam.alignment = LineAlignment.View;
         beam.textureMode = LineTextureMode.Stretch;
-        beam.sharedMaterial = Mats.Get("GasPuff");
+        beam.sharedMaterial = Mats.Get("GasRibbon");     // (fades out close to the camera)
         beam.startColor = beam.endColor = new Color(0.45f, 0.95f, 0.2f, 0.5f);
         beam.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
         beam.receiveShadows = false;

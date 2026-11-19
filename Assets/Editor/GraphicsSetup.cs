@@ -367,6 +367,10 @@ public static class GraphicsSetup
         var puff = AssetDatabase.LoadAssetAtPath<Texture2D>(TexDir + "/Fx/Puff.png");
         Particle("GasPuff", puff, additive: false);
         Particle("GasGlow", puff, additive: true);
+        // Ribbons (a fart's beam of light, the bands of a rainbow) always face the camera,
+        // so one that passes close to the eye would cover the whole screen with its colour.
+        // This material thins out towards the camera and is gone half a metre from it.
+        Particle("GasRibbon", puff, additive: false, fadeNear: 0.5f, fadeFar: 1.75f);
 
         // --- sky
         var skyTex = AssetDatabase.LoadAssetAtPath<Texture>(SkyTex);
@@ -455,7 +459,7 @@ public static class GraphicsSetup
         });
     }
 
-    static void Particle(string name, Texture2D tex, bool additive)
+    static void Particle(string name, Texture2D tex, bool additive, float fadeNear = -1f, float fadeFar = -1f)
     {
         var m = LoadOrCreate(name, "Universal Render Pipeline/Particles/Unlit");
         m.SetTexture("_BaseMap", tex);
@@ -466,6 +470,13 @@ public static class GraphicsSetup
         m.SetFloat("_SoftParticlesEnabled", 1f);
         m.SetFloat("_SoftParticlesNearFadeDistance", 0f);
         m.SetFloat("_SoftParticlesFarFadeDistance", 0.8f);
+        bool cameraFade = fadeNear >= 0f && fadeFar > fadeNear;
+        m.SetFloat("_CameraFadingEnabled", cameraFade ? 1f : 0f);
+        if (cameraFade)
+        {
+            m.SetFloat("_CameraNearFadeDistance", fadeNear);
+            m.SetFloat("_CameraFarFadeDistance", fadeFar);
+        }
         BaseShaderGUI.SetMaterialKeywords(m, null, ParticleGUI.SetMaterialKeywords);
         EditorUtility.SetDirty(m);
     }

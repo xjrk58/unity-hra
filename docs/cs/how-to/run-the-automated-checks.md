@@ -45,8 +45,9 @@ $UNITY -executeMethod ShotRunner.Run -shotDir Shots/lite    -touchHud -liteQuali
 
 Každý zapíše skoro třicet souborů PNG: pohled hráče, HUD, arénu z několika
 úhlů, prdy, příšeru zdálky, zblízka a přímo před obličejem
-(`20_`–`25_`), koně a jednorožce uprostřed duhového prdu (`30_`–`33_`)
-a konečné pořadí (`13_ranking`). Druhý a třetí příkaz ukazují,
+(`20_`–`25_`), koně, jednorožce uprostřed duhového prdu a pohled z konce
+duhy (`30_`–`34_`) a konečné pořadí (`13_ranking`). Druhý a třetí příkaz
+ukazují,
 co vykresluje telefon a starý telefon
 ([Grafické úrovně](../reference/graphics-tiers.md)). V logu je i hrubý čas
 snímku: `ShotRunner benchmark: … ms per 1080p frame`.

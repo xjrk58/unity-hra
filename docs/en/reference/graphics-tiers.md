@@ -31,6 +31,13 @@ drawn (`copyDepthMode = AfterOpaques`). With Unity's default, after the
 transparent things, the two phone tiers drew no gas at all; the desktop tier
 only escaped because its ambient occlusion makes a depth pass of its own.
 
+Two effects are ribbons that always turn to face the camera: the beam of
+light above a fart and the bands of a rainbow. A ribbon passing close to the
+eye would cover the whole view with its colour – somebody standing at a
+rainbow's end saw nothing but red, orange and yellow stripes. Ribbons
+therefore have a material of their own, `GasRibbon`, which thins out from
+1.75 m towards the camera and is gone at 0.5 m.
+
 Why the old-phone tier lights only one deck's lamps: on graphics chips limited
 to OpenGL ES 3.0 the pipeline handles 16 lights besides the sun, and the car
 park has up to 27 lamps.

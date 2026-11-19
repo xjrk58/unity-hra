@@ -457,8 +457,9 @@ public class RainbowArc : MonoBehaviour
         centre.y = to.y;
     }
 
-    // The puff material with a texture of its own: solid along the band, soft at its two
-    // edges and at its two ends.
+    // The ribbon material (which fades out close to the camera, so that somebody running
+    // to the rainbow's end does not get a screen full of stripes) with a texture of its
+    // own: solid along the band, soft at its two edges and at its two ends.
     static Material BandMaterial()
     {
         if (bandMaterial != null) return bandMaterial;
@@ -478,7 +479,7 @@ public class RainbowArc : MonoBehaviour
         }
         tex.SetPixels32(px);
         tex.Apply(false, true);
-        bandMaterial = new Material(Mats.Get("GasPuff")) { name = "RainbowBand" };
+        bandMaterial = new Material(Mats.Get("GasRibbon")) { name = "RainbowBand" };
         bandMaterial.SetTexture("_BaseMap", tex);
         return bandMaterial;
     }

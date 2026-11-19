@@ -257,6 +257,15 @@ public static class ShotRunner
                 p = at + new Vector3(2.6f, 0.55f, 1.7f);
                 Shot(cam, dir, "32_rainbow_fart", p, LookAt(p, at + Vector3.up * 0.1f));
             }
+            // Standing at the rainbow's end, where its bands and the rainbow fart's beam of
+            // light pass right by the eye. They face the camera, so without the ribbon
+            // material's fade towards the camera they covered the whole view with stripes.
+            if (unicorn.pickup != null)
+            {
+                Vector3 at = unicorn.pickup.Home;
+                p = new Vector3(at.x, y + 1.6f, at.z);
+                Shot(cam, dir, "34_rainbows_end", p, Quaternion.Euler(0f, 90f, 0f));
+            }
         }
     }
 
