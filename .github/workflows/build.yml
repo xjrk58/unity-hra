@@ -101,6 +101,11 @@ jobs:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          # GameCI asks GitHub which version of its tool is the newest. Without
+          # a token GitHub refuses that question now and then (error 403),
+          # because its build machines share their addresses. This is the job's
+          # own token, which can only read (see "permissions" above).
+          GITHUB_TOKEN: ${{ github.token }}
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
           unityVersion: auto
