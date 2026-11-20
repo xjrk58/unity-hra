@@ -5,6 +5,9 @@
 # UNITY_LICENSE, UNITY_EMAIL and UNITY_PASSWORD. Until they exist the jobs
 # finish at once with a warning. How to set them up:
 # docs/en/how-to/build-in-github-actions.md
+#
+# Pushing a tag that starts with "v" also publishes the packages as a GitHub
+# release, which anybody can download without signing in.
 name: Build packages
 
 on:
@@ -12,6 +15,12 @@ on:
     branches: [master]
     tags: ['v*']
   workflow_dispatch:
+    inputs:
+      draft_release:
+        description: 'To try out the release step: a name for a draft release (for example v0.0-test). Leave empty to only build.'
+        required: false
+        default: ''
+        type: string
 
 permissions:
   contents: read
@@ -37,11 +46,13 @@ jobs:
             buildMethod: ''
             output: Builds/StandaloneLinux64
             artifact: PrdivyZavod-linux
+            folder: PrdivyZavod
           - name: Windows
             targetPlatform: StandaloneWindows64
             buildMethod: ''
             output: Builds/StandaloneWindows64
             artifact: PrdivyZavod-windows
+            folder: PrdivyZavod
           - name: macOS
             targetPlatform: StandaloneOSX
             buildMethod: ''
@@ -119,12 +130,21 @@ jobs:
       # them as .tar.gz. An APK is uploaded as it is.
       - name: Pack
         if: steps.licence.outputs.present == 'true'
+        env:
+          OUTPUT: ${{ matrix.output }}
+          ARTIFACT: ${{ matrix.artifact }}
+          FOLDER: ${{ matrix.folder }}
         run: |
           mkdir -p dist
-          if [ -d "${{ matrix.output }}" ]; then
-            sudo tar -czf "dist/${{ matrix.artifact }}.tar.gz" -C "${{ matrix.output }}" .
+          if [ -d "$OUTPUT" ]; then
+            # The Linux and Windows builds are many loose files: they get a folder
+            # of their own inside the package. The macOS build is one .app already.
+            inside=()
+            if [ -n "$FOLDER" ]; then inside=(--transform "s,^\.,$FOLDER,"); fi
+            # (Burst's debugging data is left out: it is not meant to be handed out)
+            sudo tar -czf "dist/$ARTIFACT.tar.gz" --exclude='*_DoNotShip' "${inside[@]}" -C "$OUTPUT" .
           else
-            sudo cp "${{ matrix.output }}" dist/
+            sudo cp "$OUTPUT" dist/
           fi
           sudo chown -R "$(id -u):$(id -g)" dist
           ls -la dist
@@ -137,3 +157,78 @@ jobs:
           path: dist/*
           if-no-files-found: error
           retention-days: 30
+
+  # Publishes the five packages as a GitHub release when a tag starting with
+  # "v" was pushed and every build job succeeded. Starting the workflow by hand
+  # with a name in "draft_release" makes a draft instead: a release that only
+  # people who can write to the repository see, and that creates no tag. That
+  # is the way to try this job out.
+  release:
+    name: Publish the release
+    needs: build
+    if: >-
+      startsWith(github.ref, 'refs/tags/v') ||
+      (github.event_name == 'workflow_dispatch' && inputs.draft_release != '')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write   # creating a release; the build jobs above can only read
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      DRAFT: ${{ github.event_name == 'workflow_dispatch' && inputs.draft_release != '' }}
+      TAG: ${{ github.event_name == 'workflow_dispatch' && inputs.draft_release || github.ref_name }}
+
+    steps:
+      - name: Check out the release text
+        uses: actions/checkout@v7
+        with:
+          sparse-checkout: .github/release-notes.md
+          sparse-checkout-cone-mode: false
+
+      - name: Download the packages
+        uses: actions/download-artifact@v8
+        with:
+          path: packages
+          merge-multiple: true
+
+      - name: Prepare the files
+        run: |
+          cd packages
+          # Without the Unity licence the build jobs end without building anything.
+          for f in PrdivyZavod.apk PrdivyZavod-old.apk PrdivyZavod-linux.tar.gz \
+                   PrdivyZavod-windows.tar.gz PrdivyZavod-macos.tar.gz; do
+            if [ ! -s "$f" ]; then
+              echo "::error::$f is missing, so nothing is published. Did every build job really build?"
+              exit 1
+            fi
+          done
+          # On Windows a .zip opens with a double click; nothing in it has to stay executable.
+          mkdir windows
+          tar -xzf PrdivyZavod-windows.tar.gz -C windows
+          (cd windows && zip -q -r ../PrdivyZavod-windows.zip PrdivyZavod)
+          rm -rf windows PrdivyZavod-windows.tar.gz
+          sha256sum PrdivyZavod* > SHA256SUMS.txt
+          ls -la
+
+      - name: Publish
+        run: |
+          publish() {
+            gh release create "$TAG" packages/* --title "Prdivý závod $TAG" \
+              --notes-file .github/release-notes.md --generate-notes "$@"
+          }
+          if [ "$DRAFT" = "true" ]; then
+            if gh release view "$TAG" > /dev/null 2>&1; then
+              echo "::error::A release named $TAG exists already. Choose another name for the draft."
+              exit 1
+            fi
+            publish --draft --target "$GITHUB_SHA"
+          elif gh release view "$TAG" > /dev/null 2>&1; then
+            # this job was run again: replace the files of the release that exists
+            gh release upload "$TAG" packages/* --clobber
+          else
+            publish --verify-tag
+          fi
+          gh release view "$TAG" --json url,isDraft,assets \
+            -q '.url, "draft: \(.isDraft)", (.assets[] | "\(.size)\t\(.name)")'
+
